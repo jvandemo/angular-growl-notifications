@@ -1,6 +1,6 @@
 # Growl notifications for AngularJS
 
-This module allows you to easily create growl like notifications to your AngularJS application.
+This module allows you to declaratively create growl notifications in your AngularJS application.
 
 ## Quick start
 
@@ -12,20 +12,28 @@ Specify where you want the notifications to appear in your DOM:
 
     <div growl-notifications></div>
 
-Then add notifications using a directive:
+Add a simple notifications using a directive that will automatically disappear after 5 seconds:
 
-    <div growl-notification>Woohoo, it works</div>
+    <div growl-notification>
+        Awesome, I will automatically disappear after 5 seconds.
+    </div>
 
-Conditional statements are supported:
+Conditional notifications are great when working with forms:
 
     <div growl-notification ng-if="formSubmitted">
         Congratulations, the form was submitted successfully!
     </div>
 
-HTML and expressions are supported:
+Expressions are supported to create customizable notifications:
 
     <div growl-notification>
         Hello {{name}}
+    </div>
+
+You can even use HTML markup to make your notifications look great:
+
+    <div growl-notification>
+        <b>Hello bold {{name}}</b>
     </div>
 
 ## API
