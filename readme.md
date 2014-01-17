@@ -114,7 +114,7 @@ Each notification has three properties:
 - `type`: the notification type, can be any string and can be used to filter notifications or style them by type, defaults to 'info'
 - `ttl`: the number of milliseconds to wait before the notification is removed, defaults to 5000 (5 seconds)
 
-The `add()` method allows you to specify each property like this:
+The `add(message, type, ttl)` method allows you to specify each property like this:
 
     // Add a notification with type 'info' that is removed after 5 seconds
     growlNotifications.add('Hello world');
@@ -178,7 +178,7 @@ First assign the `growlNotifications` service to your `$scope`:
 
     }]);
 
-Then use the `notifications` property in your view template:
+Then loop over the `notifications` property in your view template:
 
     <ul class="list-unstyled">
         <li ng-repeat="(id, notification) in growlNotifications.notifications">
@@ -187,6 +187,8 @@ Then use the `notifications` property in your view template:
             </div>
         </li>
     </ul>
+
+This allows you to create virtually any markup you could possible think of.
 
 ## Change log
 
