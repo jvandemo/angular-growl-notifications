@@ -16,9 +16,11 @@ Growl notifications for AngularJS allows you to:
 - customize the CSS styles used to display the notifications
 - use the API to control everything programmatically if you want to
 
-Let's look at a quick example!
+Check out this [online demo](http://jvandemo.github.io/angular-growl-notifications/demo/).
 
-## Quick start
+Let's examine a quick example!
+
+## Quick example
 
 Load the required script libraries:
 
@@ -229,6 +231,11 @@ Then loop over the `notifications` property in your view template:
 This allows you to create virtually any markup you could possible think of.
 
 ## Change log
+
+### v0.3.0
+
+- Add dist directory with pre-built library files
+- Add demo page
 
 ### v0.2.0
 
