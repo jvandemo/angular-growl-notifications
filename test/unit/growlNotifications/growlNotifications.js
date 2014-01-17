@@ -3,7 +3,7 @@
 // Set the jasmine fixture path
 // jasmine.getFixtures().fixturesPath = 'base/';
 
-describe('', function() {
+describe('growlNotifications', function() {
 
     var module;
     var dependencies;
@@ -24,22 +24,22 @@ describe('', function() {
         expect(hasModule('growlNotifications.config')).toBeTruthy();
     });
 
-    
+
     it('should load filters module', function() {
         expect(hasModule('growlNotifications.filters')).toBeTruthy();
     });
-    
 
-    
+
+
     it('should load directives module', function() {
         expect(hasModule('growlNotifications.directives')).toBeTruthy();
     });
-    
 
-    
+
+
     it('should load services module', function() {
         expect(hasModule('growlNotifications.services')).toBeTruthy();
     });
-    
+
 
 });
