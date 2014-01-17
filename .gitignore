@@ -13,6 +13,3 @@ libpeerconnection.log
 
 # OS-specific
 .DS_Store
-
-# Bower components
-bower
