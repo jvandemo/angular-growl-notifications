@@ -22,17 +22,23 @@ Let's look at a quick example!
 
 Load the required script libraries:
 
-    <script type="text/javascript" src="angular.js"></script>
-    <script type="text/javascript" src="angular-sanitize.js"></script>
-    <script type="text/javascript" src="growl-notifications.js"></script>
+```html
+<script type="text/javascript" src="angular.js"></script>
+<script type="text/javascript" src="angular-sanitize.js"></script>
+<script type="text/javascript" src="growl-notifications.js"></script>
+```
 
 Specify the `growlNotifications` and `ngSanitize` modules as dependencies in your Angular app:
 
-    angular.module('yourApp', ['growlNotifications', 'ngSanitize']);
+```javascript
+angular.module('yourApp', ['growlNotifications', 'ngSanitize']);
+```
 
 Put this line anywhere in your HTML markup to specify where you want to display the notifications:
 
-    <div growl-notifications></div>
+```html
+<div growl-notifications></div>
+```
 
 The `growl-notifications` directive will automatically render Bootstrap compatible markup to
 display notifications using Bootstrap alert boxes.
@@ -42,9 +48,11 @@ We will get to that later.
 
 Use the `growl-notification` directive to create a notification that will automatically disappear after 5 seconds:
 
-    <div growl-notification>
-        Awesome, I will automatically disappear after 5 seconds.
-    </div>
+```html
+<div growl-notification>
+    Awesome, I will automatically disappear after 5 seconds.
+</div>
+```
 
 This will cause a notification to be displayed inside the `<div growl-notifications></div>` that is automatically removed after 5 seconds.
 
@@ -66,26 +74,32 @@ There are 2 ways to create notifications:
 The `growl-notification` directive allows you to conveniently create notifications
 from within your HTML markup:
 
-    <div growl-notification>
-        Awesome, I will automatically disappear after 5 seconds.
-    </div>
+```html
+<div growl-notification>
+    Awesome, I will automatically disappear after 5 seconds.
+</div>
+```
 
 You can add conditional notifications, which are great when working with forms:
 
-    <div growl-notification ng-if="formSubmitted">
-        Congratulations, the form was submitted successfully!
+```html
+<div growl-notification ng-if="formSubmitted">
+    Congratulations, the form was submitted successfully!
 
-        This notification will be shown when $scope.formSubmitted evaluates
-        as truthy and will disappear automatically after 5 seconds.
-    </div>
+    This notification will be shown when $scope.formSubmitted evaluates
+    as truthy and will disappear automatically after 5 seconds.
+</div>
+```
 
 You can use expressions to create personalized notifications:
 
-    <div growl-notification>
-        Hello {{name}}
+```html
+<div growl-notification>
+    Hello {{name}}
 
-        This will display "Hello world" if $scope.name = "world"
-    </div>
+    This will display "Hello world" if $scope.name = "world"
+</div>
+```
 
 Expressions are evaluated against the scope where the `growl-notification` directive is used, not where
 the `growl-notifications` is placed.
@@ -94,9 +108,11 @@ This is more intuïtive as it refers to the scope where you are using the direct
 
 Finally you can also use HTML markup to make your notifications look great:
 
-    <div growl-notification>
-        <b>Hello bold {{name}}</b>
-    </div>
+```html
+<div growl-notification>
+    <b>Hello bold {{name}}</b>
+</div>
+```
 
 To allow HTML to be used inside the directive, the `ngSanitize` module is required, hence the need
 to specify it as a dependent module in your AngularJS app.
@@ -107,12 +123,14 @@ The growlNotifications service centrally manages the notifications and can be in
 
 To create a notification from within a controller:
 
-    angular.controller('someCtrl', ['growlNotifications', function(growlNotifications){
+```javascript
+angular.controller('someCtrl', ['growlNotifications', function(growlNotifications){
 
-        // Add a notification
-        growlNotifications.add('Hello world');
+    // Add a notification
+    growlNotifications.add('Hello world');
 
-    }]);
+}]);
+```
 
 Each notification has three properties:
 
@@ -122,14 +140,16 @@ Each notification has three properties:
 
 The `add(message, type, ttl)` method allows you to specify each property like this:
 
-    // Add a notification with type 'info' that is removed after 5 seconds
-    growlNotifications.add('Hello world');
+```javascript
+// Add a notification with type 'info' that is removed after 5 seconds
+growlNotifications.add('Hello world');
 
-    // Add a notification with type 'warning' that is removed after 5 seconds
-    growlNotifications.add('Hello world', 'warning');
+// Add a notification with type 'warning' that is removed after 5 seconds
+growlNotifications.add('Hello world', 'warning');
 
-    // Add a notification with type 'warning' that is removed after 2 seconds
-    growlNotifications.add('Hello world', 'warning', 2000);
+// Add a notification with type 'warning' that is removed after 2 seconds
+growlNotifications.add('Hello world', 'warning', 2000);
+```
 
 ## Displaying the notifications
 
@@ -142,57 +162,69 @@ There are 2 ways to display notifications:
 
 The `growl-notifications` directive allows you to display the notifications anywhere in your HTML:
 
-    <div growl-notifications></div>
+```html
+<div growl-notifications></div>
+```
 
 Under the hood, the element is transformed to:
 
-    <ul class="list-unstyled" growl-notifications></ul>
+```html
+<ul class="list-unstyled" growl-notifications></ul>
+```
 
 Whenever you create a notification, a `li` item with Bootstrap compatible alert markup is created and removed when
 the TTL has expired:
 
-    <ul class="list-unstyled" growl-notifications>
-        <li class="alert alert-{{type}}">
-            Notification message
-        </li>
-    </ul>
+```html
+<ul class="list-unstyled" growl-notifications>
+    <li class="alert alert-{{type}}">
+        Notification message
+    </li>
+</ul>
+```
 
 The `li` item is assigned a CSS class `alert-{{type}}` where type is the type you specified for the notification.
 
 This allows you to easily use Bootstrap compatible alert styles:
 
-    // alert-info
-    growlNotifications.add('Hello world', 'info');
+```javascript
+// alert-info
+growlNotifications.add('Hello world', 'info');
 
-    // alert-warning
-    growlNotifications.add('Hello world', 'warning');
+// alert-warning
+growlNotifications.add('Hello world', 'warning');
 
-    // alert-danger
-    growlNotifications.add('Hello world', 'danger');
+// alert-danger
+growlNotifications.add('Hello world', 'danger');
 
-    // alert-success
-    growlNotifications.add('Hello world', 'success');
+// alert-success
+growlNotifications.add('Hello world', 'success');
+```
 
 ### Using the notifications property of the growlNotifications service
 
 First assign the `growlNotifications` service to your `$scope`:
 
-    angular.controller('someCtrl', ['growlNotifications', '$scope', function(growlNotifications, $scope){
+```javascript
+angular.controller('someCtrl', ['growlNotifications', '$scope', function(growlNotifications, $scope){
 
-        // Make sure the service can be accessed from within the view
-        $scope.growlNotifications = growlNotifications;
+    // Make sure the service can be accessed from within the view
+    $scope.growlNotifications = growlNotifications;
 
-    }]);
+}]);
+```
 
 Then loop over the `notifications` property in your view template:
 
-    <ul class="list-unstyled">
-        <li ng-repeat="(id, notification) in growlNotifications.notifications">
-            <div class="alert alert-{{notification.type}}">
-                {{notification.message}}
-            </div>
-        </li>
-    </ul>
+```html
+<ul class="list-unstyled">
+    <li ng-repeat="(id, notification) in growlNotifications.notifications">
+        <div class="alert alert-{{notification.type}}">
+            {{notification.message}}
+        </div>
+    </li>
+</ul>
+```
 
 This allows you to create virtually any markup you could possible think of.
 
