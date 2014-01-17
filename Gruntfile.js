@@ -49,6 +49,17 @@ module.exports = function (grunt) {
                 globalstrict: false
             }
         },
+        connect: {
+            server: {
+                options: {
+                    port      : 9000,
+                    base      : './',
+                    hostname  : 'localhost',
+                    keepalive : true,
+                    livereload: true
+                }
+            }
+        },
         watch: {
             options: {
                 livereload: true
@@ -65,8 +76,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
     grunt.registerTask('default', ['jshint:beforeConcat', 'concat', 'jshint:afterConcat', 'uglify']);
+    grunt.registerTask('serve', ['connect']);
     grunt.registerTask('livereload', ['default', 'watch']);
 
 };
