@@ -20,7 +20,13 @@ Let's look at a quick example!
 
 ## Quick start
 
-Include the `growlNotifications` and `ngSanitize` module in your Angular app:
+Load the required script libraries:
+
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="angular-sanitize.js"></script>
+    <script type="text/javascript" src="growl-notifications.js"></script>
+
+Specify the `growlNotifications` and `ngSanitize` modules as dependencies in your Angular app:
 
     angular.module('yourApp', ['growlNotifications', 'ngSanitize']);
 
