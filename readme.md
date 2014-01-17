@@ -20,9 +20,9 @@ Let's look at a quick example!
 
 ## Quick start
 
-Include the module in your Angular app:
+Include the `growlNotifications` and `ngSanitize` module in your Angular app:
 
-    angular.module('yourApp', ['growlNotifications']);
+    angular.module('yourApp', ['growlNotifications', 'ngSanitize']);
 
 Put this line anywhere in your HTML markup to specify where you want to display the notifications:
 
@@ -53,7 +53,7 @@ But there is more... much more... so read on...
 There are 2 ways to create notifications:
 
 - using the `growl-notification` directive in your HTML
-- using the `add()` method of the `growlNotifications` service in your code
+- using the `add()` method of the `growlNotifications` service in your JavaScript code
 
 ### Using the growl-notification directive
 
@@ -81,11 +81,19 @@ You can use expressions to create personalized notifications:
         This will display "Hello world" if $scope.name = "world"
     </div>
 
-You can even use HTML markup to make your notifications look great:
+Expressions are evaluated against the scope where the `growl-notification` directive is used, not where
+the `growl-notifications` is placed.
+
+This is more intuïtive as it refers to the scope where you are using the directive.
+
+Finally you can also use HTML markup to make your notifications look great:
 
     <div growl-notification>
         <b>Hello bold {{name}}</b>
     </div>
+
+To allow HTML to be used inside the directive, the `ngSanitize` module is required, hence the need
+to specify it as a dependent module in your AngularJS app.
 
 ### Using the growlNotifications service
 
@@ -116,3 +124,79 @@ The `add()` method allows you to specify each property like this:
 
     // Add a notification with type 'warning' that is removed after 2 seconds
     growlNotifications.add('Hello world', 'warning', 2000);
+
+## Displaying the notifications
+
+There are 2 ways to display notifications:
+
+- using the `growl-notifications` directive in your HTML to create boilerplate Bootstrap compatible markup
+- using the `notifications` property of the `growlNotifications` service to create your custom markup
+
+### Using the growl-notifications directive
+
+The `growl-notifications` directive allows you to display the notifications anywhere in your HTML:
+
+    <div growl-notifications></div>
+
+Under the hood, the element is transformed to:
+
+    <ul class="list-unstyled" growl-notifications></ul>
+
+Whenever you create a notification, a `li` item with Bootstrap compatible alert markup is created and removed when
+the TTL has expired:
+
+    <ul class="list-unstyled" growl-notifications>
+        <li class="alert alert-{{type}}">
+            Notification message
+        </li>
+    </ul>
+
+The `li` item is assigned a CSS class `alert-{{type}}` where type is the type you specified for the notification.
+
+This allows you to easily use Bootstrap compatible alert styles:
+
+    // alert-info
+    growlNotifications.add('Hello world', 'info');
+
+    // alert-warning
+    growlNotifications.add('Hello world', 'warning');
+
+    // alert-danger
+    growlNotifications.add('Hello world', 'danger');
+
+    // alert-success
+    growlNotifications.add('Hello world', 'success');
+
+### Using the notifications property of the growlNotifications service
+
+First assign the `growlNotifications` service to your `$scope`:
+
+    angular.controller('someCtrl', ['growlNotifications', '$scope', function(growlNotifications, $scope){
+
+        // Make sure the service can be accessed from within the view
+        $scope.growlNotifications = growlNotifications;
+
+    }]);
+
+Then use the `notifications` property in your view template:
+
+    <ul class="list-unstyled">
+        <li ng-repeat="(id, notification) in growlNotifications.notifications">
+            <div class="alert alert-{{notification.type}}">
+                {{notification.message}}
+            </div>
+        </li>
+    </ul>
+
+## Change log
+
+### v0.2.0
+
+- Add `growl-notification` directive to conveniently add notifications from within HTML markup
+- Add `growl-notifications` directive to conveniently display notifications from within HTML markup
+- Add documentation
+
+### v0.1.0
+
+- Initial version
+
