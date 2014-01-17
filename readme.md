@@ -40,14 +40,13 @@ Use the `growl-notification` directive to create a notification that will automa
         Awesome, I will automatically disappear after 5 seconds.
     </div>
 
-This will cause a notification to be displayed (inside the `<div growl-notifications></div>` from
-the previous step) that is automatically removed after 5 seconds.
+This will cause a notification to be displayed inside the `<div growl-notifications></div>` that is automatically removed after 5 seconds.
 
 That's it! You've got a fully working growl notification system in just 3 lines of code!
 
 And if you are using Bootstrap, it will already look great too.
 
-But there is so much more... so read on...
+But there is more... much more... so read on...
 
 ## Creating notifications
 
