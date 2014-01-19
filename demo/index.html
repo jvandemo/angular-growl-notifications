@@ -2,11 +2,27 @@
 <html>
 <head>
     <title>Examples</title>
-    <link rel="stylesheet" href="../bower/bootstrap/dist/css/bootstrap.css"/>
-    <script type="text/javascript" src="../bower/angular/angular.js"></script>
-    <script type="text/javascript" src="../bower/angular-sanitize/angular-sanitize.js"></script>
-    <script type="text/javascript" src="../dist/growl-notifications.js"></script>
+    <link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bower/animate.css/animate.css"/>
+    <script type="text/javascript" src="/bower/angular/angular.js"></script>
+    <script type="text/javascript" src="/bower/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="/bower/angular-sanitize/angular-sanitize.js"></script>
+    <script type="text/javascript" src="/dist/growl-notifications.js"></script>
     <script type="text/javascript" src="app.js"></script>
+    <style>
+        .ng-enter{
+            -webkit-animation: fadeInDown 1s;
+            -moz-animation: fadeInDown 1s;
+            -ms-animation: fadeInDown 1s;
+            animation: fadeInDown 1s;
+        }
+        .ng-leave{
+            -webkit-animation: fadeOut 1s;
+            -moz-animation: fadeOut 1s;
+            -ms-animation: fadeOut 1s;
+            animation: fadeOut 1s;
+        }
+    </style>
 </head>
 <body ng-app="app">
 
@@ -20,20 +36,20 @@
 
             <div class="row">
 
-                <div class="col-sm-3">
+                <div class="col-sm-4">
 
                     <div growl-notification>
                         Hello there!
                     </div>
 
                     <div growl-notification>
-                        <b>Welcome</b>
+                        <b>Bold title</b><br />
                         <div>
-                            <span>To the demo!</span>
+                            <span>Hello {{me}}</span>
                         </div>
                     </div>
 
-                    <p>Add a notification:</p>
+                    <p>Try out some notifications:</p>
 
                     <form>
                         <div class="form-group">
@@ -57,14 +73,14 @@
 
                 </div>
 
-                <div class="col-sm-3">
+                <div class="col-sm-4">
 
-                    <p>Example HTML output with the <code>growl-notifications</code>directive:</p>
+                    <p>Example HTML output with directive:</p>
                     <div growl-notifications></div>
 
                 </div>
 
-                <div class="col-sm-3">
+                <div class="col-sm-4">
 
                     <p>Example HTML output with bootstrap alerts:</p>
                     <ul class="list-unstyled">
@@ -77,7 +93,11 @@
 
                 </div>
 
-                <div class="col-sm-3">
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-12">
 
                     <p>Inspect growlNotifications.notifications:</p>
                     <pre>{{growlNotifications.notifications | json}}</pre>

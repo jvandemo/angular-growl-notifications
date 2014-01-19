@@ -1,4 +1,10 @@
-angular.module('app', ['growlNotifications', 'ngSanitize']);
+angular.module('app', ['growlNotifications', 'ngSanitize', 'ngAnimate']);
+
+angular.module('app')
+    .run(['$animate', function($animate){
+        $animate.enabled(true);
+        console.log('Animation enabled: ' + $animate.enabled());
+    }]);
 
 angular.module('app')
     .controller('MainCtrl', ['$scope', 'growlNotifications', function($scope, growlNotifications){
