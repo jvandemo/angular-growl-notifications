@@ -12,7 +12,7 @@ angular.module('app')
         $scope.me = "Jurgen";
 
         $scope.notification = {
-            message: 'Hello world',
+            message: '<strong>Awesome</strong>\nGrowl notifications rock!',
             type: 'info',
             ttl: 5000
         };
