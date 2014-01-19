@@ -232,16 +232,21 @@ This allows you to create virtually any markup you could possible think of.
 
 ## Change log
 
+### v0.4.0
+
+- Added $animate support
+- Updated demo page
+
 ### v0.3.0
 
-- Add dist directory with pre-built library files
-- Add demo page
+- Added dist directory with pre-built library files
+- Added demo page
 
 ### v0.2.0
 
-- Add `growl-notification` directive to conveniently add notifications from within HTML markup
-- Add `growl-notifications` directive to conveniently display notifications from within HTML markup
-- Add documentation
+- Added `growl-notification` directive to conveniently add notifications from within HTML markup
+- Added `growl-notifications` directive to conveniently display notifications from within HTML markup
+- Added documentation
 
 ### v0.1.0
 
