@@ -24,12 +24,20 @@ angular.module('growlNotifications',
 angular.module('growlNotifications.directives')
     .directive('growlNotification', ['growlNotifications', '$sce', '$interpolate', function(growlNotifications, $sce, $interpolate){
 
+        var defaults = {
+            message: '',
+            type: 'info',
+            ttl: 5000
+        };
+
         return {
             restrict: 'AE',
             replace: true,
             template: '',
             transclude: true,
             link: function(scope, iElem, iAttrs, ctrls, transcludeFn){
+
+                var options = angular.extend({}, defaults, scope.$eval(iAttrs.growlNotification));
 
                 transcludeFn(function(elem, scope){
 
@@ -51,7 +59,7 @@ angular.module('growlNotifications.directives')
                     safeHtml = $sce.trustAsHtml(html);
 
                     // Add notification
-                    growlNotifications.add(safeHtml);
+                    growlNotifications.add(safeHtml, options.type, options.ttl);
                 });
             }
 
