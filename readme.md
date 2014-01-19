@@ -82,6 +82,16 @@ from within your HTML markup:
 </div>
 ```
 
+Pass an object if you want to individually specify the `type` and `ttl` options:
+
+```html
+<div growl-notification><strong>Welcome (TTL 5000)</strong></div>
+
+<div growl-notification="{ttl: 6000, type: 'danger'}"><strong>Danger (TTL 6000)</strong></div>
+
+<div growl-notification="{ttl: 8000, type: 'success'}"><strong>Success (TTL 8000)</strong></div>
+```
+
 You can add conditional notifications, which are great when working with forms:
 
 ```html
