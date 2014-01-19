@@ -46,46 +46,48 @@
 
                 <div class="col-sm-4">
 
-                    <h4>Input</h4>
+                    <h4>Add notification</h4>
 
                     <div growl-notification><strong>Welcome</strong></div>
 
-                    <p>Add a notification:</p>
+                    <div class="well">
 
-                    <form>
-                        <div class="form-group">
-                            <label>Message:</label>
-                            <textarea rows="3" class="form-control" ng-model="notification.message"></textarea>
-                            <span class="help-block">The message you wish to display.</span>
-                        </div>
-                        <div class="form-group">
-                            <label>Type:</label>
-                            <p>Select a predefined type:</p>
-                            <select ng-model="notification.type" class="form-control">
-                                <option value="info">info</option>
-                                <option value="warning">warning</option>
-                                <option value="danger">danger</option>
-                                <option value="success">success</option>
-                                <option value="error">error</option>
-                            </select>
-                            <p>Or assign your own custom type:</p>
-                            <input type="text" class="form-control" ng-model="notification.type" />
-                            <span class="help-block">The type of the message can be anything you like e.g. warning, error, succes, etc. In this example an <code>alert-&lt;type&gt;</code> CSS class is added to the notification so you can style the notifications with bootstrap styles.</span>
-                        </div>
-                        <div class="form-group">
-                            <label>TTL:</label>
-                            <input type="text" class="form-control" ng-model="notification.ttl" />
-                            <span class="help-block">Time in ms how long you want to display the notification. Default is 5000ms (5 seconds) but you can change it for each notification.</span>
-                        </div>
-                    </form>
+                        <form>
+                            <div class="form-group">
+                                <label>Message:</label>
+                                <textarea rows="3" class="form-control" ng-model="notification.message"></textarea>
+                                <span class="help-block">The message you wish to display.</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Type:</label>
+                                <p>Select a predefined type:</p>
+                                <select ng-model="notification.type" class="form-control">
+                                    <option value="info">info</option>
+                                    <option value="warning">warning</option>
+                                    <option value="danger">danger</option>
+                                    <option value="success">success</option>
+                                    <option value="error">error</option>
+                                </select>
+                                <p>Or assign your own custom type:</p>
+                                <input type="text" class="form-control" ng-model="notification.type" />
+                                <span class="help-block">The type of the message can be anything you like e.g. warning, error, succes, etc. In this example an <code>alert-&lt;type&gt;</code> CSS class is added to the notification so you can style the notifications with bootstrap styles.</span>
+                            </div>
+                            <div class="form-group">
+                                <label>TTL:</label>
+                                <input type="text" class="form-control" ng-model="notification.ttl" />
+                                <span class="help-block">Time in ms how long you want to display the notification. Default is 5000ms (5 seconds) but you can change it for each notification.</span>
+                            </div>
+                        </form>
 
-                    <button ng-click="addNotification()" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add notification</button>
+                        <button ng-click="addNotification()" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add notification</button>
+
+                    </div>
 
                 </div>
 
                 <div class="col-sm-4">
 
-                    <h4>Output</h4>
+                    <h4>Output using directive</h4>
 
                     <p>Example HTML output using the built-in <code>growl-notifications</code> directive:</p>
 
@@ -99,7 +101,7 @@
 
                 <div class="col-sm-4">
 
-                    <h4>Output</h4>
+                    <h4>Output using custom markup</h4>
 
                     <p>Example HTML output using your own custom markup in your view template:</p>
 
