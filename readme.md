@@ -248,6 +248,10 @@ This happens when the ngSanitize module isn't loaded. Make sure the module is lo
 
 ## Change log
 
+### v0.6.0
+
+- The growl-notifications directive now uses an isolate scope
+
 ### v0.5.0
 
 - Added support for custom options in growl-notification directive
