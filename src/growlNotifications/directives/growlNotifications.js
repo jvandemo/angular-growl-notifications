@@ -3,10 +3,20 @@ angular.module('growlNotifications.directives')
 
         return {
             restrict: 'AE',
-            replace: true,
+            replace: false,
             scope: {},
-            template: '<ul class="list-unstyled"><li ng-repeat="(id, notification) in notifications"><div class="alert alert-{{notification.type}}"><div ng-bind-html="notification.message"></div></div></li></ul>',
+            template: [
+                '<ul class="list-unstyled">',
+                '   <li ng-repeat="(id, notification) in notifications">',
+                '       <div class="{{cssPrefix}} {{cssPrefix}}-{{notification.type}}">',
+                '           <div ng-bind-html="notification.message">',
+                '           </div>',
+                '       </div>',
+                '   </li>',
+                '</ul>'
+            ].join('\n'),
             link: function(scope){
+                scope.cssPrefix = growlNotifications.options.cssPrefix;
                 scope.notifications = growlNotifications.notifications;
             }
         };
