@@ -181,23 +181,27 @@ The `growl-notifications` directive allows you to display the notifications anyw
 Under the hood, the element is transformed to:
 
 ```html
-<ul class="list-unstyled" growl-notifications></ul>
+<div growl-notifications>
+    <ul class="list-unstyled"></ul>
+</div>
 ```
 
 Whenever you create a notification, a `li` item with Bootstrap compatible alert markup is created and removed when
 the TTL has expired:
 
 ```html
-<ul class="list-unstyled" growl-notifications>
-    <li class="alert alert-{{type}}">
-        Notification message
-    </li>
-</ul>
+<div growl-notifications>
+    <ul class="list-unstyled">
+        <li class="alert alert-{{type}}">
+            Notification message
+        </li>
+    </ul>
+</div>
 ```
 
 The `li` item is assigned a CSS class `alert-{{type}}` where type is the type you specified for the notification.
 
-This allows you to easily use Bootstrap compatible alert styles:
+This allows you to easily use Bootstrap compatible alert styles out of the box like this:
 
 ```javascript
 // alert-info
@@ -212,6 +216,8 @@ growlNotifications.add('Hello world', 'danger');
 // alert-success
 growlNotifications.add('Hello world', 'success');
 ```
+
+You can change this default behavior using the `cssPrefix()` method of the `growlNotificationsProvider`.
 
 ### Using the notifications property of the growlNotifications service
 
@@ -247,6 +253,10 @@ This allows you to create virtually any markup you could possible think of.
 This happens when the ngSanitize module isn't loaded. Make sure the module is loaded.
 
 ## Change log
+
+### v0.7.0
+
+- Added support for custom css prefix (defaults to Bootstrap alert)
 
 ### v0.6.0
 
