@@ -35,6 +35,14 @@
 
 <p>Think Growl, but in AngularJS. Oh, and Bootstrap compatible too.</p>
 
+<h2>
+<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h2>
+
+<p>Check out this <a href="http://jvandemo.github.io/angular-growl-notifications/demo/">online demo</a>.</p>
+
+<h2>
+<a name="key-features" class="anchor" href="#key-features"><span class="octicon octicon-link"></span></a>Key features</h2>
+
 <p>Growl notifications for AngularJS allows you to:</p>
 
 <ul>
@@ -47,9 +55,15 @@
 <li>completely customize the markup that is used to render the notifications</li>
 <li>customize the CSS styles used to display the notifications</li>
 <li>use the API to control everything programmatically if you want to</li>
-</ul><p>Check out this <a href="http://jvandemo.github.io/angular-growl-notifications/demo/">online demo</a>.</p>
+</ul><p>Let's examine a quick example!</p>
 
-<p>Let's examine a quick example!</p>
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Using bower:</p>
+
+<pre lang="shell"><code>$ bower install angular-growl-notifications
+</code></pre>
 
 <h2>
 <a name="quick-example" class="anchor" href="#quick-example"><span class="octicon octicon-link"></span></a>Quick example</h2>
@@ -109,6 +123,15 @@ from within your HTML markup:</p>
 <div class="highlight highlight-html"><pre><span class="nt">&lt;div</span> <span class="na">growl-notification</span><span class="nt">&gt;</span>
     Awesome, I will automatically disappear after 5 seconds.
 <span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+<p>Pass an object if you want to individually specify the <code>type</code> and <code>ttl</code> options:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;div</span> <span class="na">growl-notification</span><span class="nt">&gt;&lt;strong&gt;</span>Welcome (TTL 5000)<span class="nt">&lt;/strong&gt;&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">growl-notification=</span><span class="s">"{ttl: 6000, type: 'danger'}"</span><span class="nt">&gt;&lt;strong&gt;</span>Danger (TTL 6000)<span class="nt">&lt;/strong&gt;&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">growl-notification=</span><span class="s">"{ttl: 8000, type: 'success'}"</span><span class="nt">&gt;&lt;strong&gt;</span>Success (TTL 8000)<span class="nt">&lt;/strong&gt;&lt;/div&gt;</span>
 </pre></div>
 
 <p>You can add conditional notifications, which are great when working with forms:</p>
@@ -199,22 +222,26 @@ to specify it as a dependent module in your AngularJS app.</p>
 
 <p>Under the hood, the element is transformed to:</p>
 
-<div class="highlight highlight-html"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-unstyled"</span> <span class="na">growl-notifications</span><span class="nt">&gt;&lt;/ul&gt;</span>
+<div class="highlight highlight-html"><pre><span class="nt">&lt;div</span> <span class="na">growl-notifications</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-unstyled"</span><span class="nt">&gt;&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </pre></div>
 
 <p>Whenever you create a notification, a <code>li</code> item with Bootstrap compatible alert markup is created and removed when
 the TTL has expired:</p>
 
-<div class="highlight highlight-html"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-unstyled"</span> <span class="na">growl-notifications</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"alert alert-{{type}}"</span><span class="nt">&gt;</span>
-        Notification message
-    <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
+<div class="highlight highlight-html"><pre><span class="nt">&lt;div</span> <span class="na">growl-notifications</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-unstyled"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"alert alert-{{type}}"</span><span class="nt">&gt;</span>
+            Notification message
+        <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </pre></div>
 
 <p>The <code>li</code> item is assigned a CSS class <code>alert-{{type}}</code> where type is the type you specified for the notification.</p>
 
-<p>This allows you to easily use Bootstrap compatible alert styles:</p>
+<p>This allows you to easily use Bootstrap compatible alert styles out of the box like this:</p>
 
 <div class="highlight highlight-javascript"><pre><span class="c1">// alert-info</span>
 <span class="nx">growlNotifications</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'Hello world'</span><span class="p">,</span> <span class="s1">'info'</span><span class="p">);</span>
@@ -228,6 +255,8 @@ the TTL has expired:</p>
 <span class="c1">// alert-success</span>
 <span class="nx">growlNotifications</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'Hello world'</span><span class="p">,</span> <span class="s1">'success'</span><span class="p">);</span>
 </pre></div>
+
+<p>You can change this default behavior using the <code>cssPrefix()</code> method of the <code>growlNotificationsProvider</code>.</p>
 
 <h3>
 <a name="using-the-notifications-property-of-the-growlnotifications-service" class="anchor" href="#using-the-notifications-property-of-the-growlnotifications-service"><span class="octicon octicon-link"></span></a>Using the notifications property of the growlNotifications service</h3>
@@ -256,9 +285,32 @@ the TTL has expired:</p>
 <p>This allows you to create virtually any markup you could possible think of.</p>
 
 <h2>
+<a name="faq" class="anchor" href="#faq"><span class="octicon octicon-link"></span></a>F.A.Q.</h2>
+
+<p><em>The console log shows an error: "Attempting to use an unsafe value in a safe context"</em></p>
+
+<p>This happens when the ngSanitize module isn't loaded. Make sure the module is loaded.</p>
+
+<h2>
 <a name="change-log" class="anchor" href="#change-log"><span class="octicon octicon-link"></span></a>Change log</h2>
 
 <h3>
+<a name="v070" class="anchor" href="#v070"><span class="octicon octicon-link"></span></a>v0.7.0</h3>
+
+<ul>
+<li>Added support for custom css prefix (defaults to Bootstrap alert)</li>
+</ul><h3>
+<a name="v060" class="anchor" href="#v060"><span class="octicon octicon-link"></span></a>v0.6.0</h3>
+
+<ul>
+<li>The growl-notifications directive now uses an isolate scope</li>
+</ul><h3>
+<a name="v050" class="anchor" href="#v050"><span class="octicon octicon-link"></span></a>v0.5.0</h3>
+
+<ul>
+<li>Added support for custom options in growl-notification directive</li>
+<li>Updated demo page</li>
+</ul><h3>
 <a name="v040" class="anchor" href="#v040"><span class="octicon octicon-link"></span></a>v0.4.0</h3>
 
 <ul>
