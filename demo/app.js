@@ -7,6 +7,14 @@ angular.module('app')
     }]);
 
 angular.module('app')
+    .config(['growlNotificationsProvider', function(growlNotificationsProvider){
+
+        // Any config work you want here...
+        // growlNotificationsProvider.cssPrefix('growwwwwl');
+
+    }]);
+
+angular.module('app')
     .controller('MainCtrl', ['$scope', 'growlNotifications', function($scope, growlNotifications){
 
         $scope.me = "Jurgen";

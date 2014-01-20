@@ -48,7 +48,11 @@
 
                     <h4>Add notification</h4>
 
-                    <div growl-notification><strong>Welcome</strong></div>
+                    <div growl-notification><strong>Welcome (TTL 5000)</strong></div>
+
+                    <div growl-notification="{ttl: 6000, type: 'danger'}"><strong>Danger (TTL 6000)</strong></div>
+
+                    <div growl-notification="{ttl: 8000, type: 'success'}"><strong>Success (TTL 8000)</strong></div>
 
                     <div class="well">
 

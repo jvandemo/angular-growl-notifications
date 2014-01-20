@@ -24,12 +24,20 @@ angular.module('growlNotifications',
 angular.module('growlNotifications.directives')
     .directive('growlNotification', ['growlNotifications', '$sce', '$interpolate', function(growlNotifications, $sce, $interpolate){
 
+        var defaults = {
+            message: '',
+            type: 'info',
+            ttl: 5000
+        };
+
         return {
             restrict: 'AE',
             replace: true,
             template: '',
             transclude: true,
             link: function(scope, iElem, iAttrs, ctrls, transcludeFn){
+
+                var options = angular.extend({}, defaults, scope.$eval(iAttrs.growlNotification));
 
                 transcludeFn(function(elem, scope){
 
@@ -51,19 +59,33 @@ angular.module('growlNotifications.directives')
                     safeHtml = $sce.trustAsHtml(html);
 
                     // Add notification
-                    growlNotifications.add(safeHtml);
+                    growlNotifications.add(safeHtml, options.type, options.ttl);
                 });
             }
 
         };
 
     }]);angular.module('growlNotifications.directives')
-    .directive('growlNotifications', ['growlNotifications', '$sce', '$rootScope', '$injector', function(growlNotifications, $sce, $rootScope, $injector){
+    .directive('growlNotifications', ['growlNotifications', function(growlNotifications){
 
         return {
             restrict: 'AE',
-            replace: true,
-            template: '<ul class="list-unstyled"><li ng-repeat="(id, notification) in growlNotifications.notifications"><div class="alert alert-{{notification.type}}"><div ng-bind-html="notification.message"></div></div></li></ul>'
+            replace: false,
+            scope: {},
+            template: [
+                '<ul class="list-unstyled">',
+                '   <li ng-repeat="(id, notification) in notifications">',
+                '       <div class="{{cssPrefix}} {{cssPrefix}}-{{notification.type}}">',
+                '           <div ng-bind-html="notification.message">',
+                '           </div>',
+                '       </div>',
+                '   </li>',
+                '</ul>'
+            ].join('\n'),
+            link: function(scope){
+                scope.cssPrefix = growlNotifications.options.cssPrefix;
+                scope.notifications = growlNotifications.notifications;
+            }
         };
 
     }]);angular.module('growlNotifications.services')
@@ -72,7 +94,12 @@ angular.module('growlNotifications.directives')
         // Default options
         var options = {
             ttl: 5000,
-            type: 'info'
+            type: 'info',
+
+            // Default css prefix that is used to construct growl css classes
+            // 2 classes will be added: cssPrefix and cssPrefix-type to support
+            // Bootstrap alerts out of the box
+            cssPrefix: 'alert'
         };
 
         /**
@@ -93,10 +120,10 @@ angular.module('growlNotifications.directives')
          */
         this.ttl = function(ttl){
             if(angular.isDefined(ttl)){
-                this.options.ttl = ttl;
+                options.ttl = ttl;
                 return this;
             }
-            return this.options.ttl;
+            return options.ttl;
         };
 
         /**
@@ -107,10 +134,24 @@ angular.module('growlNotifications.directives')
          */
         this.type = function(type){
             if(angular.isDefined(type)){
-                this.options.type = type;
+                options.type = type;
                 return this;
             }
-            return this.options.type;
+            return options.type;
+        };
+
+        /**
+         * Provider convenience method to get or set default type
+         *
+         * @param type
+         * @returns {*}
+         */
+        this.cssPrefix = function(cssPrefix){
+            if(angular.isDefined(cssPrefix)){
+                options.cssPrefix = cssPrefix;
+                return this;
+            }
+            return options.cssPrefix;
         };
 
         /**
@@ -126,6 +167,8 @@ angular.module('growlNotifications.directives')
 
                 this._notifications = {};
                 this._index = 0;
+
+                this.options = options;
 
                 Object.defineProperty(this, 'notifications', {
                     get: function(){
