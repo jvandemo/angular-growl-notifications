@@ -240,7 +240,18 @@ Then loop over the `notifications` property in your view template:
 
 This allows you to create virtually any markup you could possible think of.
 
+## F.A.Q.
+
+*The console log shows an error: "Attempting to use an unsafe value in a safe context"*
+
+This happens when the ngSanitize module isn't loaded. Make sure the module is loaded.
+
 ## Change log
+
+### v0.5.0
+
+- Added support for custom options in growl-notification directive
+- Updated demo page
 
 ### v0.4.0
 
