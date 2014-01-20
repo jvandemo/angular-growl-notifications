@@ -4,7 +4,12 @@ angular.module('growlNotifications.services')
         // Default options
         var options = {
             ttl: 5000,
-            type: 'info'
+            type: 'info',
+
+            // Default css prefix that is used to construct growl css classes
+            // 2 classes will be added: cssPrefix and cssPrefix-type to support
+            // Bootstrap alerts out of the box
+            cssPrefix: 'alert'
         };
 
         /**
@@ -25,10 +30,10 @@ angular.module('growlNotifications.services')
          */
         this.ttl = function(ttl){
             if(angular.isDefined(ttl)){
-                this.options.ttl = ttl;
+                options.ttl = ttl;
                 return this;
             }
-            return this.options.ttl;
+            return options.ttl;
         };
 
         /**
@@ -39,10 +44,24 @@ angular.module('growlNotifications.services')
          */
         this.type = function(type){
             if(angular.isDefined(type)){
-                this.options.type = type;
+                options.type = type;
                 return this;
             }
-            return this.options.type;
+            return options.type;
+        };
+
+        /**
+         * Provider convenience method to get or set default type
+         *
+         * @param type
+         * @returns {*}
+         */
+        this.cssPrefix = function(cssPrefix){
+            if(angular.isDefined(cssPrefix)){
+                options.cssPrefix = cssPrefix;
+                return this;
+            }
+            return options.cssPrefix;
         };
 
         /**
@@ -58,6 +77,8 @@ angular.module('growlNotifications.services')
 
                 this._notifications = {};
                 this._index = 0;
+
+                this.options = options;
 
                 Object.defineProperty(this, 'notifications', {
                     get: function(){
