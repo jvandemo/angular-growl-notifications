@@ -4,6 +4,12 @@ Declaratively create notifications that automatically disappear after a specifie
 
 Think Growl, but in AngularJS. Oh, and Bootstrap compatible too.
 
+## Demo
+
+Check out this [online demo](http://jvandemo.github.io/angular-growl-notifications/demo/).
+
+## Key features
+
 Growl notifications for AngularJS allows you to:
 
 - create notifications without programming
@@ -16,9 +22,15 @@ Growl notifications for AngularJS allows you to:
 - customize the CSS styles used to display the notifications
 - use the API to control everything programmatically if you want to
 
-Check out this [online demo](http://jvandemo.github.io/angular-growl-notifications/demo/).
-
 Let's examine a quick example!
+
+## Installation
+
+Using bower:
+
+```shell
+$ bower install angular-growl-notifications
+```
 
 ## Quick example
 
