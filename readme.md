@@ -6,7 +6,7 @@ Most existing growl systems require you to add notifications using JavaScript in
 
 This module allows you to declaratively create notifications using directives only, supporting both inline expressions and HTML.
 
-Think Growl, but in AngularJS directives. Oh, and Bootstrap compatible by default too.
+Think Growl, but in AngularJS directives. Oh, and Bootstrap compatible too.
 
 ## Demo
 
@@ -37,7 +37,7 @@ Now let's add a notification that is only shown when a certain condition is met:
     Thank you, we will contact you shortly.
 </div>
 ```
-We can even use AngularJS expressions inside the notification like this:
+You can even use AngularJS expressions inside the notification like this:
 ```html
 <!-- The growl-notification directive supports AngularJS expressions -->
 <div growl-notification ng-if="formHasBeenSubmitted">
@@ -109,14 +109,14 @@ This allows you to easily use Bootstrap compatible alert styles out of the box l
 
 ```html
 <div growl-notification="{ type: 'warning' }">
-    An warning
+    A warning
 </div>
 
 <div growl-notification="{ type: 'success' }">
-    An success message
+    A success message
 </div>
 ```
-You can finetune the behavior of the `growl-notifications` directive using the `growlNoticationsProvider`. Check the API for more information.
+You can finetune the behavior of the `growl-notifications` directive using the `growlNoticationsProvider`. Check out the `growlNoticationsProvider` section for more information.
 
 ## The growl-notification directive
 
@@ -129,7 +129,7 @@ The `growl-notification` directive allows you to create notifications from withi
 ```
 The notification is sent to a central `growlNotifications` service that manages all notifications and removes them form your page when they expire.
 
-The `growl-notification` accepts an object literal value to specifiy individual options:
+The `growl-notification` directive accepts an object literal value to specifiy individual options:
 
 - `type`: the notification type, can be any string and can be used to filter notifications or style them by type, defaults to 'info'
 - `ttl`: the number of milliseconds to wait before the notification is removed, defaults to 5000 (5 seconds)
@@ -167,9 +167,9 @@ You can use expressions to show data from your scope:
 Expressions are evaluated against the scope where the `growl-notification` directive is used, not where
 the `growl-notifications` is placed.
 
-This is more intuïtive as it refers to the scope where you are using the directive.
+This is more intuïtive as it refers to the scope of the piece of the DOM where you are writing the markup for the notification.
 
-Finally you can also use HTML markup to make your notifications look great:
+Finally you can also use HTML markup to make your notifications look exactly the way you want them to:
 
 ```html
 <div growl-notification>
@@ -241,7 +241,7 @@ Then loop over the `notifications` property in your view template:
 </ul>
 ```
 
-This allows you to create virtually any markup you could possible think of.
+This allows you to create virtually any markup you could possibly think of.
 
 ## The growlNotificationsProvider
 
@@ -304,4 +304,3 @@ This happens when the ngSanitize module isn't loaded. Make sure the module is lo
 ### v0.1.0
 
 - Initial version
-
