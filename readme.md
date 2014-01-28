@@ -23,7 +23,7 @@ the notifications so you can style them any way you like in your CSS-->
 
 <!-- The growl-notification directive adds a notification -->
 <div growl-notification>
-    I will popup as a growl notification and automatically disappear after 5 seconds.
+    I will pop up as a growl notification and automatically disappear after 5 seconds.
 </div>
 ```
 
