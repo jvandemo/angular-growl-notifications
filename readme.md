@@ -270,6 +270,22 @@ angular.module('yourApp')
 
 This happens when the ngSanitize module isn't loaded. Make sure the module is loaded.
 
+*I added the notifications to my website but can't see them anywhere on the page*
+
+The notifications are probably rendered in the DOM (you can check using developer tools) but are probably not visible in your layout.
+
+If you want the notifications to appear on the top right of your screen above your existing content, you can use a few CSS rules like this:
+
+```html
+div.growl-notifications {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  z-index: 1000;
+  width: 200px;
+}
+```
+
 ## Change log
 
 ### v0.7.0
