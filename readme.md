@@ -1,3 +1,5 @@
+![AngularJS Growl Notifications](http://i.imgur.com/F4ttQxo.png)
+
 # Growl notifications for AngularJS
 
 Notifications logically belong inside the view layer of your application.
