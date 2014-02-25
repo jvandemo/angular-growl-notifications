@@ -14,6 +14,8 @@ Think Growl, but in AngularJS directives. Oh, and Bootstrap compatible too.
 
 Check out this [online demo](http://jvandemo.github.io/angular-growl-notifications/demo/).
 
+![Demo](http://i.imgur.com/l4FW98l.png)
+
 ## Example
 
 Add the following markup to your view template:
