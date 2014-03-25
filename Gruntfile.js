@@ -1,5 +1,8 @@
 module.exports = function (grunt) {
 
+    require('load-grunt-tasks')(grunt);
+    var files = require('./files').files;
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         concat: {
@@ -69,16 +72,33 @@ module.exports = function (grunt) {
                 'src/**/*'
             ],
             tasks: ['default']
+        },
+        karma: {
+          unit: {
+            browsers: [ grunt.option('browser') || 'PhantomJS' ],
+            configFile: 'config/karma/src.conf.js',
+            singleRun: true
+          },
+          debug: {
+            singleRun: false,
+            background: false,
+            configFile: 'config/karma/src.conf.js',
+            browsers: [ grunt.option('browser') || 'Chrome' ]
+          },
+          dist: {
+            browsers: [ grunt.option('browser') || 'PhantomJS' ],
+            configFile: 'config/karma/dist.conf.js',
+            singleRun: true
+          },
+          'dist-min': {
+            browsers: [ grunt.option('browser') || 'PhantomJS' ],
+            configFile: 'config/karma/dist.min.conf.js',
+            singleRun: true
+          }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-
-    grunt.registerTask('default', ['jshint:beforeConcat', 'concat', 'jshint:afterConcat', 'uglify']);
+    grunt.registerTask('default', ['karma:unit', 'jshint:beforeConcat', 'concat', 'jshint:afterConcat', 'karma:dist', 'uglify', 'karma:dist-min']);
     grunt.registerTask('serve', ['connect']);
     grunt.registerTask('livereload', ['default', 'watch']);
 
