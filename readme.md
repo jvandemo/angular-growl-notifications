@@ -1,6 +1,7 @@
 ![AngularJS Growl Notifications](http://i.imgur.com/F4ttQxo.png)
 
 # Growl notifications for AngularJS
+[![Build Status](https://travis-ci.org/jvandemo/angular-growl-notifications.png?branch=master)](https://travis-ci.org/jvandemo/angular-growl-notifications)
 
 Notifications logically belong inside the view layer of your application.
 
