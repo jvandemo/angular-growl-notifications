@@ -4,13 +4,13 @@ module.exports = function (grunt) {
     var files = require('./files').files;
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        concat: {
+        pkg    : grunt.file.readJSON('package.json'),
+        concat : {
             options: {
                 separator: ''
             },
             library: {
-                src: [
+                src : [
                     'src/growlNotifications/growlNotifications.prefix',
                     'src/growlNotifications/growlNotifications.js',
                     'src/growlNotifications/directives/**/*.js',
@@ -21,33 +21,33 @@ module.exports = function (grunt) {
                 dest: 'dist/growl-notifications.js'
             }
         },
-        uglify: {
+        uglify : {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
             },
-            jid: {
+            jid    : {
                 files: {
                     'dist/growl-notifications.min.js': ['<%= concat.library.dest %>']
                 }
             }
         },
-        jshint: {
+        jshint : {
             beforeConcat: {
                 src: ['gruntfile.js', 'growlNotifications/**/*.js']
             },
-            afterConcat: {
+            afterConcat : {
                 src: [
                     '<%= concat.library.dest %>'
                 ]
             },
-            options: {
+            options     : {
                 // options here to override JSHint defaults
-                globals: {
-                    jQuery: true,
-                    console: true,
-                    module: true,
+                globals     : {
+                    jQuery  : true,
+                    console : true,
+                    module  : true,
                     document: true,
-                    angular: true
+                    angular : true
                 },
                 globalstrict: false
             }
@@ -63,38 +63,38 @@ module.exports = function (grunt) {
                 }
             }
         },
-        watch: {
+        watch  : {
             options: {
                 livereload: true
             },
-            files: [
+            files  : [
                 'Gruntfile.js',
                 'src/**/*'
             ],
-            tasks: ['default']
+            tasks  : ['default']
         },
-        karma: {
-          unit: {
-            browsers: [ grunt.option('browser') || 'PhantomJS' ],
-            configFile: 'config/karma/src.conf.js',
-            singleRun: true
-          },
-          debug: {
-            singleRun: false,
-            background: false,
-            configFile: 'config/karma/src.conf.js',
-            browsers: [ grunt.option('browser') || 'Chrome' ]
-          },
-          dist: {
-            browsers: [ grunt.option('browser') || 'PhantomJS' ],
-            configFile: 'config/karma/dist.conf.js',
-            singleRun: true
-          },
-          'dist-min': {
-            browsers: [ grunt.option('browser') || 'PhantomJS' ],
-            configFile: 'config/karma/dist.min.conf.js',
-            singleRun: true
-          }
+        karma  : {
+            unit      : {
+                browsers  : [ grunt.option('browser') || 'PhantomJS' ],
+                configFile: 'config/karma/src.conf.js',
+                singleRun : true
+            },
+            debug     : {
+                singleRun : false,
+                background: false,
+                configFile: 'config/karma/src.conf.js',
+                browsers  : [ grunt.option('browser') || 'Chrome' ]
+            },
+            dist      : {
+                browsers  : [ grunt.option('browser') || 'PhantomJS' ],
+                configFile: 'config/karma/dist.conf.js',
+                singleRun : true
+            },
+            'dist-min': {
+                browsers  : [ grunt.option('browser') || 'PhantomJS' ],
+                configFile: 'config/karma/dist.min.conf.js',
+                singleRun : true
+            }
         }
     });
 
