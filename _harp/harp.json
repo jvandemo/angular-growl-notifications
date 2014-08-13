@@ -1,0 +1,6 @@
+{
+  "globals": {
+    "baseUrl": "/angular-growl-notifications/",
+    "name": "Bootstrap boilerplate for Harp"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "hb-bootstrap",
+  "version": "0.3.0",
+  "homepage": "https://github.com/jvandemo/hb-bootstrap",
+  "authors": [
+    "Jurgen Van de Moere <jurgen.van.de.moere@gmail.com>"
+  ],
+  "description": "Harp Boilerplate of a Bootstrap website",
+  "keywords": [
+    "harp",
+    "boilerplate",
+    "bootstrap"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1"
+  }
+}

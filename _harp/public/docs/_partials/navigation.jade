@@ -1,0 +1,17 @@
+ul.nav.nav-pills.nav-stacked.nav-docs
+    li(class="#{ current.source == 'installation' ? 'active' : '' }")
+        a(href="#{baseUrl}/docs/installation") Installation
+    li
+        h1 Recipes
+    li(class="#{ current.source == 'customize-bootstrap' ? 'active' : '' }")
+        a(href="#{baseUrl}/docs/recipes/customize-bootstrap") How to customize Bootstrap
+    li(class="#{ current.source == 'themes' ? 'active' : '' }")
+        a(href="#{baseUrl}/docs/recipes/themes") How to create themes
+    li(class="#{ current.source == 'host-in-subdirectory' ? 'active' : '' }")
+        a(href="#{baseUrl}/docs/recipes/host-in-subdirectory") How to host in a subdirectory
+    li
+        h1 Links
+    li
+        a(href="https://github.com/jvandemo/hb-bootstrap") Github repository
+    li
+        a(href="http://harpjs.com") Harp website
