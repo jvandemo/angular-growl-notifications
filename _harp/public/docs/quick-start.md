@@ -55,6 +55,22 @@ You can now use the `growl-notification` (singular) directive to create notifica
 
 Check out the [growl-notification directive documentation](directives/growl-notification) for all available options.
 
+## Customize look and feel
+
+By default no styling is applied so you can completely control the look and feel of the notifications in your application's stylesheet.
+
+The possibilities are endless, for example:
+
+```html
+growl-notification{
+  border: 1px solid black;
+  padding: 15px 30px;
+  margin-bottom: 15px;
+}
+```
+
+Visit the [examples](../examples) page for more sample code.
+
 ## That's it
 
 You now have a working notification system in your AngularJS application.
