@@ -21,8 +21,7 @@
   "ignore": [
     "src",
     "test",
-    "Gruntfile.js",
-    "**/.*"
+    "Gruntfile.js"
   ],
   "repository": {
     "type": "git",
