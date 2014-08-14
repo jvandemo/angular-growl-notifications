@@ -21,7 +21,13 @@
   "ignore": [
     "src",
     "test",
-    "Gruntfile.js"
+    ".bowerrc",
+    ".editorconfig",
+    ".gitignore",
+    ".jshintrc",
+    ".travis.yml",
+    "Gruntfile.js",
+    "package.json"
   ],
   "repository": {
     "type": "git",
