@@ -1,45 +1,54 @@
 angular.module('growlNotifications.directives')
-    .directive('growlNotification', ['growlNotifications', '$sce', '$interpolate', function(growlNotifications, $sce, $interpolate){
+  .directive('growlNotification', ['growlNotifications', '$animate', '$timeout', function (growlNotifications, $animate, $timeout) {
 
-        var defaults = {
-            message: '',
-            type: 'info',
-            ttl: 5000
-        };
+    var defaults = {
+      ttl: 5000
+    };
+
+    return {
+      restrict: 'AE',
+      scope: true,
+      compile: function (tElem, tAttrs) {
+
+        if (!growlNotifications.element) {
+          throw new Error('Skipping growlNotification directive because no growlNotifications directive has been defined');
+        }
 
         return {
-            restrict: 'AE',
-            replace: true,
-            template: '',
-            transclude: true,
-            link: function(scope, iElem, iAttrs, ctrls, transcludeFn){
 
-                var options = angular.extend({}, defaults, scope.$eval(iAttrs.growlNotification));
+          // Wait for post link function so all child elements have been compiled
+          // and linked to their correct scope
+          post: function (scope, iElem, iAttrs) {
 
-                transcludeFn(function(elem, scope){
+            // Assemble options
+            var options = angular.extend({}, defaults, scope.$eval(iAttrs.growlNotification)),
+                timer;
 
-                    var e,
-                        html,
-                        interpolateFn,
-                        safeHtml;
+            // Move the element to the right location in the DOM
+            $animate.move(iElem, growlNotifications.element);
 
-                    // Create temporary wrapper element so we can grab the inner html
-                    e = angular.element(document.createElement('div'));
-                    e.append(elem);
-                    html = e.html();
+            // Provide a remove function to remove the growl instance
+            scope.remove = function () {
 
-                    // Interpolate expressions in current scope
-                    interpolateFn = $interpolate(html);
-                    html = interpolateFn(scope);
+              // Remove the element
+              $animate.leave(iElem);
 
-                    // Tell Angular the HTML can be trusted so it can be used in ng-bind-html
-                    safeHtml = $sce.trustAsHtml(html);
+              // Cancel scheduled automatic removal if there is one
+              if (timer) {
+                timer.cancel();
+              }
+            };
 
-                    // Add notification
-                    growlNotifications.add(safeHtml, options.type, options.ttl);
-                });
-            }
+            // Schedule automatic removal
+            timer = $timeout(function () {
+              $animate.leave(iElem);
+            }, options.ttl);
 
+          }
         };
 
-    }]);
+      }
+    };
+
+
+  }]);
