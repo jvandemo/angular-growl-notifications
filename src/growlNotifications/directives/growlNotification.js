@@ -14,6 +14,10 @@ angular.module('growlNotifications.directives')
         var options = angular.extend({}, defaults, scope.$eval(iAttrs.growlNotification)),
             timer = null;
 
+        if(iAttrs.ttl){
+          options.ttl = scope.$eval(iAttrs.ttl);
+        }
+
         // Move the element to the right location in the DOM
         $animate.move(iElem, growlNotifications.element);
 

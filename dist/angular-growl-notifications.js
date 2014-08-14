@@ -34,7 +34,11 @@ angular.module('growlNotifications.directives')
 
         // Assemble options
         var options = angular.extend({}, defaults, scope.$eval(iAttrs.growlNotification)),
-            timer;
+            timer = null;
+
+        if(iAttrs.ttl){
+          options.ttl = scope.$eval(iAttrs.ttl);
+        }
 
         // Move the element to the right location in the DOM
         $animate.move(iElem, growlNotifications.element);
@@ -46,7 +50,7 @@ angular.module('growlNotifications.directives')
           $animate.leave(iElem);
 
           // Cancel scheduled automatic removal if there is one
-          if (timer) {
+          if (timer && timer.cancel) {
             timer.cancel();
           }
         };
