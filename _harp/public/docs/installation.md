@@ -1,36 +1,22 @@
 # Installation
 
-First make sure you have Harp and Bower installed:
+Download the library from [GitHub](https://github.com/jvandemo/angular-growl-notifications) or install it using bower: 
 
 ```sh
-$ sudo npm install -g harp
-$ sudo npm install -g bower
+$ bower install angular-growl-notifications
 ```
 
-Then initialize the boilerplate:
+Load the library in your markup:
 
-```sh
-$ harp init -b jvandemo/hb-bootstrap myproject
+```html
+<script type="text/javascript" src="angular.js"></script>
+<script type="text/javascript" src="growl-notifications.js"></script>
 ```
 
-Change the directory to the new `myproject` directory:
+Load the `growlNotifications` module in your AngularJS application:
 
-```sh
-$ cd myproject
+```javascript
+angular.module('yourApp', ['growlNotifications', 'ngSanitize']);
 ```
 
-Download Bootstrap using bower:
-
-```sh
-$ bower install
-```
-
-Start the harp server from your project directory:
-
-```sh
-$ harp server
-```
-
-And navigate to `http://localhost:9000` in your browser:
-
-![](http://i.imgur.com/n9bcerv.png)
+That's it, you can now create growl notifications using the included directives.

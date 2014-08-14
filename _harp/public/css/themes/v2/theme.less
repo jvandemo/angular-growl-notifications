@@ -1,0 +1,129 @@
+//
+// Theme specific styles
+//
+// This file first includes your custom Bootstrap
+// and then allows you to define all theme specific
+// CSS styles
+//
+// You can use all Bootstrap variables and mixins
+// if you included them in _bootstrap.less
+//
+// --------------------------------------------------
+
+// Import custom bootstrap
+@import "_bootstrap.less";
+
+// Theme specific styles come here and can use all Bootstrap
+// variables and mixins (if you included them)
+
+html{
+  font-size: @font-size-base;
+  -webkit-font-smoothing: antialiased;
+  background: url(../../../img/bg-optimized.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+//  -moz-background-size: cover;
+//  -o-background-size: cover;
+//  background-size: cover;
+}
+
+body{
+  font-size: 100%;
+  font-weight: 400;
+  background: transparent;
+  main{
+    padding-top: 30px;
+  }
+  main, footer{
+    background: #ffffff;
+  }
+  &.home{
+    main{
+      padding-top: 0;
+    }
+    main, footer{
+      background: transparent;
+      color: #ffffff;
+    }
+  }
+}
+
+footer{
+  padding: (@grid-gutter-width * 2) 0;
+  text-align: center;
+  font-size: .7rem;
+}
+
+h1, h2, h3, h4, h5, h6{
+  margin-bottom: 0.5em;
+}
+
+nav.navbar-default{
+  // background: rgba(0,0,0,0.3);
+  background: transparent;
+  padding: 15px 0 10px 0;
+  border: none;
+  // min-height: 130px;
+  a.navbar-brand{
+    color: #ffffff;
+    img{
+      height: 30px;
+      margin-right: 11px;
+    }
+    @media (max-width: @screen-sm-max) {
+      font-size: 1rem;
+    }
+  }
+  ul.nav{
+    li{
+      a{
+        color: #ffffff;
+        &:hover{
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+pre{
+  margin: 1.5rem 0;
+}
+
+.jumbotron-home{
+  // background: rgba(255,255,255,0.3);
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  h1{
+    font-size: 2rem;
+    margin-top: 0;
+    color: #ffffff;
+  }
+  ul.benefits{
+    margin: 30px 0;
+    // list-style: none;
+    li{
+      margin-top: 1em;
+      &:first-child{
+        margin-top: 0;
+      }
+    }
+    .title{
+      font-size: 1.4rem;
+      margin-bottom: 0.5em;
+    }
+    .detail{
+
+    }
+  }
+  div.logo{
+    margin-bottom: 30px;
+    text-align: center;
+    img{
+      height: 150px;
+    }
+  }
+  pre{
+    background: rgba(0,0,0,0.3);
+    color: #ffffff;
+  }
+}
