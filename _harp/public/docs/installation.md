@@ -1,6 +1,6 @@
 # Installation
 
-Download the library from [GitHub](https://github.com/jvandemo/angular-growl-notifications) or install it using bower: 
+Download the code from [GitHub](https://github.com/jvandemo/angular-growl-notifications) or install it using bower: 
 
 ```sh
 $ bower install angular-growl-notifications

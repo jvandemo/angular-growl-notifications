@@ -1,4 +1,6 @@
 ul.nav.nav-pills.nav-stacked.nav-docs
+    li(class="#{ current.source == 'quick-start' ? 'active' : '' }")
+        a(href="#{baseUrl}/docs/quick-start") Quick start
     li(class="#{ current.source == 'installation' ? 'active' : '' }")
         a(href="#{baseUrl}/docs/installation") Installation
     li
@@ -10,6 +12,4 @@ ul.nav.nav-pills.nav-stacked.nav-docs
     li
         h1 Links
     li
-        a(href="https://github.com/jvandemo/hb-bootstrap") Github repository
-    li
-        a(href="http://harpjs.com") Harp website
+        a(href="https://github.com/jvandemo/angular-growl-notifications") Github repository
