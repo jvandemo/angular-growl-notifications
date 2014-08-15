@@ -1,0 +1,94 @@
+style.
+    growl-notification.fading.ng-move{
+        opacity: 0;
+        -webkit-transition: 1s linear all; /* Safari/Chrome */
+        transition: 1s linear all; /* All other modern browsers and IE10+ */
+    }
+
+    growl-notification.fading.ng-move.ng-move-active {
+        opacity: 1;
+    }
+    growl-notification.fading.ng-leave {
+        opacity: 1;
+        -webkit-transition: 1s linear all; /* Safari/Chrome */
+        transition: 1s linear all; /* All other modern browsers and IE10+ */
+    }
+
+    growl-notification.fading.ng-leave.ng-leave-active {
+        opacity: 0;
+    }
+
+h1 Fading animation
+
+p Fade in and out notifications.
+
+h2 Scenario
+
+ul
+    li a first notification is shown when the page loads
+    li a second notification is shown when the "Show second notification" button is clicked
+
+growl-notifications
+
+growl-notification.fading
+    | Only fade out is animated
+growl-notification.fading(ng-if="showGrowl")
+    | Both fade in and out are animated
+
+button.btn.btn-primary(ng-click="showGrowl = true") Show second notification
+
+h2 How it works
+
+:markdown
+    Behind the scenes, growl notifications are moved inside the DOM from where they are defined (using the `growlNotification` directive) to where they are displayed (using the `growlNotifications` directive).
+
+    Growl notifications for AngularJS is tightly integrated with Angular's `$animate` service so you can make use of the `ng-move` classes to animate your notifications ([learn more](https://docs.angularjs.org/api/ngAnimate/service/$animate)).
+
+    In this example we use CSS transitions to fade in and out the notifications.
+
+    It is important to note that the `ng-move` animation is not triggered on initial page load. This is default AngularJS behavior ([read more](https://github.com/angular/angular.js/issues/5130)) and causes the fade in effect only to be visible in the notification that is triggered by clicking the button.
+
+h2 Code
+
+:markdown
+    ```javascript
+    // Load the ngAnimate module to enable animation
+    angular.module('yourApp', ['growlNotifications', 'ngAnimate']);
+    ```
+
+:markdown
+    ```markup
+    <!-- Show a notification when the page is loaded -->
+    <growl-notification class="fading">
+        Only fade out is animated
+    <growl-notification>
+
+    <!-- Show a notification when a button is clicked -->
+    <growl-notification class="fading" ng-if="showGrowl">
+        Both fade in and out are animated
+    <growl-notification>
+
+    <!-- Button to display second notification -->
+    <button ng-click="showGrowl = true" class="btn btn-primary">Show second notification</button>
+    ```
+
+    ```css
+    growl-notification.fading.ng-move{
+        opacity: 0;
+        -webkit-transition: 1s linear all; /* Safari/Chrome */
+        transition: 1s linear all; /* All other modern browsers and IE10+ */
+    }
+
+    growl-notification.fading.ng-move.ng-move-active {
+        opacity: 1;
+    }
+    growl-notification.fading.ng-leave {
+        opacity: 1;
+        -webkit-transition: 1s linear all; /* Safari/Chrome */
+        transition: 1s linear all; /* All other modern browsers and IE10+ */
+    }
+
+    growl-notification.fading.ng-leave.ng-leave-active {
+        opacity: 0;
+    }
+    ```

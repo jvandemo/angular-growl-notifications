@@ -1,0 +1,36 @@
+h1 Close link
+
+p How to add a close link to a notification.
+
+growl-notifications
+
+growl-notification(ttl="60000")
+    p One
+    div
+        a(href="#", ng-click="$growlNotification.remove()") Close me
+
+growl-notification(ttl="60000")
+    p Two
+    div
+        a(href="#", ng-click="$growlNotification.remove()") Close me
+
+h2 Scenario
+
+ul
+    li display a notification
+    li add a link to the notification so it can be removed immediately
+    li if not removed after 60 seconds, remove it automatically
+
+h2 Code
+
+:markdown
+    ```markup
+    <!-- The ttl takes care of automatically removing the notification after 60 seconds -->
+    <growl-notification ttl="60000">
+        <p>One</p>
+        <div>
+            <!-- Manually remove the notification using the $growlNotification.remove() method -->
+            <a href="#" ng-click="$growlNotification.remove()">Close me</a>
+        </div>
+    <growl-notification>
+    ```

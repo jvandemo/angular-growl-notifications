@@ -1,0 +1,55 @@
+h1 Basic example
+
+p This basic example shows two notifications when the page loads.
+
+growl-notifications.example-basic
+
+growl-notification
+    | One
+growl-notification
+    | Two
+
+h2 Scenario
+
+ul
+    li Load notification with message "One" when page loads
+    li Load notification with message "Two" when page loads
+
+h2 Code
+
+:markdown
+    ```markup
+    <!-- Display first notification -->
+    <growl-notification>
+        One
+    <growl-notification>
+
+    <!-- Display second notification -->
+    <growl-notification>
+        Two
+    <growl-notification>
+    ```
+
+p The styling of the notifications is completely controlled in CSS.
+
+p The CSS used in these example pages to render notifications in the top right of the page looks like this:
+
+:markdown
+    ```css
+    growl-notifications {
+        position: fixed;
+        top: 150px;
+        right: 10px;
+        z-index: 1000;
+    }
+
+    growl-notifications growl-notification {
+        background: rgba(0,0,0,0.6);
+        color: white;
+        padding: 15px 30px;
+        width: 200px;
+        display: block;
+        border-radius: 5px;
+        margin-top: 15px;
+    }
+    ```
