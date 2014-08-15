@@ -2,17 +2,17 @@
 
 Learn how to create Mac OS X like pop-up notifications in your AngularJS application.
 
-## Install the library
+## STEP 1: Install the library
 
 Download the code from [GitHub](https://github.com/jvandemo/angular-growl-notifications) or install it using bower: 
 
-```sh
+```bash
 $ bower install angular-growl-notifications
 ```
 
 Load the library in your markup:
 
-```html
+```markup
 <script type="text/javascript" src="angular.js"></script>
 <script type="text/javascript" src="growl-notifications.js"></script>
 ```
@@ -25,7 +25,7 @@ angular.module('yourApp', ['growlNotifications']);
 
 The library is now loaded in your AngularJS application.
 
-## Specify where you want to render the notifications
+## STEP 2: Specify where you want to render the notifications
 
 Before you can create notifications, you need to add the `growl-notifications` (plural) directive to your markup.
 
@@ -33,7 +33,7 @@ This directive allows you to control where the notifications are rendered in you
 
 In most cases you should simply add it as the first element inside the `body` element:
 
-```html
+```markup
 <body>
   <growl-notifications></growl-notifications>
   
@@ -43,11 +43,11 @@ In most cases you should simply add it as the first element inside the `body` el
 
 Check out the [growl-notifications directive documentation](directives/growl-notifications) for more information.
 
-## Create notifications
+## STEP 3: Create notifications
 
 You can now use the `growl-notification` (singular) directive to create notifications in your application:
 
-```html
+```markup
 <growl-notification>
   Hello world
 </growl-notification>
@@ -55,13 +55,18 @@ You can now use the `growl-notification` (singular) directive to create notifica
 
 Check out the [growl-notification directive documentation](directives/growl-notification) for all available options.
 
-## Customize look and feel
+## STEP 4: Customize look and feel
 
 By default no styling is applied so you can completely control the look and feel of the notifications in your application's stylesheet.
 
-The possibilities are endless, for example:
+The possibilities are endless, for example to display notifications in the top right of your page:
 
-```html
+```css
+growl-notifications{
+  position: fixed;
+  top: 150px;
+  right: 10px;
+}
 growl-notification{
   border: 1px solid black;
   padding: 15px 30px;
@@ -69,8 +74,8 @@ growl-notification{
 }
 ```
 
-Visit the [examples](../examples) page for more sample code.
-
 ## That's it
 
 You now have a working notification system in your AngularJS application.
+
+Visit the [examples page](../examples) for more sample code.
