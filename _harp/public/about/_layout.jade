@@ -1,0 +1,20 @@
+doctype html
+html(ng-app="examples")
+    head
+        != partial("../_partials/head")
+
+    body.examples
+        header
+            != partial("../_partials/header")
+
+        main
+            .container
+                .row
+                    .col-sm-3
+                        != partial("_partials/navigation")
+
+                    .col-sm-9
+                        != yield
+
+        footer
+            != partial("../_partials/footer")
