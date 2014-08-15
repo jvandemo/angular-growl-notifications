@@ -29,12 +29,29 @@ angular.module('growlNotifications.directives')
 
     return {
       restrict: 'AE',
-      scope: true,
-      link: function (scope, iElem, iAttrs) {
+      controller: function($scope, $element, $attrs){
+
+        // Placeholder for timer promise
+        this.timer = null;
+
+        // Close method to close growl notification manually
+        this.close = function(){
+
+          // Remove the element
+          $animate.leave($element);
+
+          // Cancel scheduled automatic removal if there is one
+          if (this.timer && this.timer.cancel) {
+            this.timer.cancel();
+          }
+        };
+
+      },
+      controllerAs: '$growlNotification',
+      link: function (scope, iElem, iAttrs, ctrl) {
 
         // Assemble options
-        var options = angular.extend({}, defaults, scope.$eval(iAttrs.growlNotification)),
-            timer = null;
+        var options = angular.extend({}, defaults, scope.$eval(iAttrs.growlNotificationOptions));
 
         if(iAttrs.ttl){
           options.ttl = scope.$eval(iAttrs.ttl);
@@ -43,20 +60,8 @@ angular.module('growlNotifications.directives')
         // Move the element to the right location in the DOM
         $animate.move(iElem, growlNotifications.element);
 
-        // Provide a remove function to remove the growl instance
-        scope.remove = function () {
-
-          // Remove the element
-          $animate.leave(iElem);
-
-          // Cancel scheduled automatic removal if there is one
-          if (timer && timer.cancel) {
-            timer.cancel();
-          }
-        };
-
         // Schedule automatic removal
-        timer = $timeout(function () {
+        ctrl.timer = $timeout(function () {
           $animate.leave(iElem);
         }, options.ttl);
 
