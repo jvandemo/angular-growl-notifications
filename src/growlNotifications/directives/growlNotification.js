@@ -6,7 +6,17 @@ angular.module('growlNotifications.directives')
     };
 
     return {
+
+      /**
+       * Allow compilation via attributes as well so custom
+       * markup can be used
+       */
       restrict: 'AE',
+
+      /**
+       * Create new child scope
+       */
+      scope: true,
 
       /**
        * Controller

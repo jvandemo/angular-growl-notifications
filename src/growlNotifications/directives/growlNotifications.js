@@ -2,8 +2,21 @@ angular.module('growlNotifications.directives')
   .directive('growlNotifications', ['growlNotifications', function (growlNotifications) {
 
     return {
+
+      /**
+       * Allow compilation via attributes as well so custom
+       * markup can be used
+       */
       restrict: 'AE',
-      link: function (scope, iElem) {
+
+      /**
+       * Post link function
+       *
+       * @param scope
+       * @param iElem
+       * @param iAttrs
+       */
+      link: function (scope, iElem, iAttrs) {
         growlNotifications.element = iElem;
       }
     };
