@@ -1,6 +1,6 @@
 {
   "globals": {
-    "baseUrl": "",
+    "baseUrl": "/angular-growl-notifications",
     "name": "Growl notifications for AngularJS"
   }
 }
