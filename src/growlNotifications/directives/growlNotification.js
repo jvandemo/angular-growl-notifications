@@ -2,7 +2,7 @@ angular.module('growlNotifications.directives')
   .directive('growlNotification', ['growlNotifications', '$animate', '$timeout', function (growlNotifications, $animate, $timeout) {
 
     var defaults = {
-      ttl: growlNotifications.ttl() | 5000
+      ttl: growlNotifications.options.ttl || 5000
     };
 
     return {

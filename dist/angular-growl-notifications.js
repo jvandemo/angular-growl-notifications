@@ -24,7 +24,7 @@ angular.module('growlNotifications.directives')
   .directive('growlNotification', ['growlNotifications', '$animate', '$timeout', function (growlNotifications, $animate, $timeout) {
 
     var defaults = {
-      ttl: growlNotifications.ttl() | 5000
+      ttl: growlNotifications.options.ttl || 5000
     };
 
     return {
@@ -142,7 +142,7 @@ angular.module('growlNotifications.directives')
          * @param $rootScope
          * @returns {GrowlNotifications}
          */
-        this.$get = function ($timeout, $rootScope) {
+        this.$get = function () {
 
             function GrowlNotifications() {
 
@@ -154,9 +154,6 @@ angular.module('growlNotifications.directives')
             return new GrowlNotifications();
 
         };
-
-        this.$get.$inject = ['$timeout', '$rootScope'];
-
 
     }]);
 })(window, document);

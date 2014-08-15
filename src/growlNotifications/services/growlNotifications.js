@@ -37,7 +37,7 @@ angular.module('growlNotifications.services')
          * @param $rootScope
          * @returns {GrowlNotifications}
          */
-        this.$get = function ($timeout, $rootScope) {
+        this.$get = function () {
 
             function GrowlNotifications() {
 
@@ -49,8 +49,5 @@ angular.module('growlNotifications.services')
             return new GrowlNotifications();
 
         };
-
-        this.$get.$inject = ['$timeout', '$rootScope'];
-
 
     }]);
