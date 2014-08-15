@@ -9,7 +9,7 @@
                         .title Plug and play
                         .detail Create Mac OS X like pop-up notifications from anywhere in your markup using a simple directive. No JavaScript programming required.
                          :markdown
-                            ```
+                            ```markup
                             <growl-notification>
                                 Hello world
                             </growl-notification>
@@ -18,7 +18,7 @@
                         .title Supports expressions
                         .detail Embed AngularJS expressions in your notifications to create personalized messages. Growl notifications for AngularJS will make sure the correct scope is applied so you don't have to worry about it.
                         :markdown
-                            ```
+                            ```markup
                             <growl-notification>
                                 Hello {{name}}
                             </growl-notification>
@@ -27,16 +27,16 @@
                         .title Supports HTML
                         .detail Use HTML in your notifications to tailor the content of your messages to your needs.
                         :markdown
-                            ```
+                            ```markup
                             <growl-notification>
-                                Hello <b>{{name}}</b>
+                                Hello <strong>{{name}}</strong>
                             </growl-notification>
                             ```
                     li
                         .title Supports animation
                         .detail Automatically integrates with the AngularJS animation service to bring your notifications to life.
                         :markdown
-                            ```
+                            ```css
                             growl-notification.ng-enter{
                                 ...
                             }
@@ -54,7 +54,7 @@
                         .title Supports CSS
                         .detail Style the notifications using standard CSS to integrate them visually with your existing web application.
                         :markdown
-                            ```
+                            ```css
                             growl-notification{
                                 background: white;
                             }
@@ -70,7 +70,7 @@
                         .detail Includes an MIT license so you can use it anywhere you like
 
                 p
-                    a.btn.btn-primary.btn-block(href="docs/quick-start") Get started
+                    a.btn.btn-primary.btn-block(href="docs") Get started
 
             .col-sm-6.col-lg-5.col-lg-offset-1
                 .logo
