@@ -53,6 +53,10 @@ footer{
   font-size: .7rem;
 }
 
+pre{
+  border: none;
+}
+
 /************************************************************
 *
 * HEADINGS
@@ -66,8 +70,26 @@ h1, h2, h3, h4, h5, h6{
 body.docs{
   h2{
     font-weight: bold;
+    font-size: 1.3rem;
+    margin: 3rem 0 1.5rem 0;
+  }
+  h3{
     font-size: 1.1rem;
+    margin: 2rem 0 1.5rem 0;
+    color:#777777;
+  }
+}
+
+body.examples{
+  h2{
+    font-weight: bold;
+    font-size: 1.3rem;
     margin: 2rem 0 1rem 0;
+  }
+  h3{
+    font-size: 1.1rem;
+    margin: 2rem 0 1.5rem 0;
+    color:#777777;
   }
 }
 
@@ -137,34 +159,30 @@ pre{
       height: 150px;
     }
   }
-  pre{
-    background: rgba(0,0,0,0.3);
-    color: #ffffff;
-  }
 }
 
 growl-notifications{
   position: fixed;
   top: 150px;
   right: 10px;
+  z-index: 1000;
   growl-notification{
-    background: rgba(0,0,0,0.6);
-    color: white;
+    background: white;
     padding: 15px 30px;
     width: 200px;
     display: block;
     border-radius: 5px;
     margin-top: 15px;
+    border: 1px solid #eeeeee;
+    border-left-width: 5px;
+    border-radius: 3px;
+    border-left-color: #f0ad4e;
     &:first-child{
       margin-top: 0;
     }
-    a{
-      color: #ffffff;
-      font-weight: bold;
-      text-decoration: underline;
-      &:hover{
-        color: #ffffff;
-      }
-    }
   }
+}
+
+section.comments{
+  margin: 60px 0;
 }
