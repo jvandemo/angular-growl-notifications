@@ -2,18 +2,30 @@ angular.module('growlNotifications.directives')
   .directive('growlNotification', ['growlNotifications', '$animate', '$timeout', function (growlNotifications, $animate, $timeout) {
 
     var defaults = {
-      ttl: 5000
+      ttl: growlNotifications.ttl() | 5000
     };
 
     return {
       restrict: 'AE',
+
+      /**
+       * Controller
+       *
+       * @param $scope
+       * @param $element
+       * @param $attrs
+       */
       controller: function($scope, $element, $attrs){
 
-        // Placeholder for timer promise
+        /**
+         * Placeholder for timer promise
+         */
         this.timer = null;
 
-        // Close method to close growl notification manually
-        this.close = function(){
+        /**
+         * Helper method to close notification manually
+         */
+        this.remove = function(){
 
           // Remove the element
           $animate.leave($element);
@@ -25,7 +37,20 @@ angular.module('growlNotifications.directives')
         };
 
       },
+
+      /**
+       * Make the controller available in the directive scope
+       */
       controllerAs: '$growlNotification',
+
+      /**
+       * Post link function
+       *
+       * @param scope
+       * @param iElem
+       * @param iAttrs
+       * @param ctrl
+       */
       link: function (scope, iElem, iAttrs, ctrl) {
 
         // Assemble options
