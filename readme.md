@@ -21,6 +21,8 @@ Think Growl, but in AngularJS directives. Oh, and Bootstrap compatible too.
 - [View live examples](http://jvandemo.github.io/angular-growl-notifications/examples/)
 - [Read the complete documentation](http://jvandemo.github.io/angular-growl-notifications/docs/)
 
+[![Official website](http://i.imgur.com/tB1FvX7.png)](http://jvandemo.github.io/angular-growl-notifications/)
+
 # Quick start
 
 Learn how to create Mac OS X like pop-up notifications in your AngularJS application.
