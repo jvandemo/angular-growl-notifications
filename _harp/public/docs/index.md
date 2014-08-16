@@ -14,7 +14,7 @@ Load the library in your markup:
 
 ```markup
 <script type="text/javascript" src="angular.js"></script>
-<script type="text/javascript" src="growl-notifications.js"></script>
+<script type="text/javascript" src="angular-growl-notifications.js"></script>
 ```
 
 Load the `growlNotifications` module in your AngularJS application:
