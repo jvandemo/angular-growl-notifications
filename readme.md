@@ -9,6 +9,100 @@ To download the latest code, please check the v2.x.x branch. It contains the lat
 # Growl notifications for AngularJS
 [![Build Status](https://travis-ci.org/jvandemo/angular-growl-notifications.png?branch=master)](https://travis-ci.org/jvandemo/angular-growl-notifications)
 
+Notifications logically belong inside the view layer of your application.
+
+Most existing growl systems require you to add notifications using JavaScript inside your controller layer.
+
+This module allows you to declaratively create notifications using directives only, supporting both inline expressions and HTML.
+
+Think Growl, but in AngularJS directives. Oh, and Bootstrap compatible too.
+
+- [Visit the official website](http://jvandemo.github.io/angular-growl-notifications/)
+- [View live examples](http://jvandemo.github.io/angular-growl-notifications/examples/)
+- [Read the complete documentation](http://jvandemo.github.io/angular-growl-notifications/docs/)
+
+# Quick start
+
+Learn how to create Mac OS X like pop-up notifications in your AngularJS application.
+
+## STEP 1: Install the library
+
+Download the code from [GitHub](https://github.com/jvandemo/angular-growl-notifications) or install it using bower: 
+
+```bash
+$ bower install angular-growl-notifications
+```
+
+Load the library in your markup:
+
+```markup
+<script type="text/javascript" src="angular.js"></script>
+<script type="text/javascript" src="angular-growl-notifications.js"></script>
+```
+
+Load the `growlNotifications` module in your AngularJS application:
+
+```javascript
+angular.module('yourApp', ['growlNotifications']);
+```
+
+The library is now loaded in your AngularJS application.
+
+## STEP 2: Specify where you want to render the notifications
+
+Before you can create notifications, you need to add the `growl-notifications` (plural) directive to your markup.
+
+This directive allows you to control where the notifications are rendered in your DOM in case your application requires special behavior.
+
+In most cases you should simply add it as the first element inside the `body` element:
+
+```markup
+<body>
+  <growl-notifications></growl-notifications>
+  
+  ...
+</body>
+```
+
+Check out the [growl-notifications directive documentation](http://jvandemo.github.io/angular-growl-notifications/docs/directives/growl-notifications) for more information.
+
+## STEP 3: Create notifications
+
+You can now use the `growl-notification` (singular) directive to create notifications in your application:
+
+```markup
+<growl-notification>
+  Hello world
+</growl-notification>
+```
+
+Check out the [growl-notification directive documentation](http://jvandemo.github.io/angular-growl-notifications/docs/directives/growl-notification) for all available options.
+
+## STEP 4: Customize look and feel
+
+By default no styling is applied so you can completely control the look and feel of the notifications in your application's stylesheet.
+
+The possibilities are endless, for example to display notifications in the top right of your page:
+
+```css
+growl-notifications{
+  position: fixed;
+  top: 150px;
+  right: 10px;
+}
+growl-notification{
+  border: 1px solid black;
+  padding: 15px 30px;
+  margin-bottom: 15px;
+}
+```
+
+## That's it
+
+You now have a working notification system in your AngularJS application.
+
+Visit the [examples page](http://jvandemo.github.io/angular-growl-notifications/examples) for more sample code.
+
 ## Change log
 
 ### v2.0.0
