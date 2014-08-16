@@ -101,7 +101,7 @@ growl-notification{
 
 ### That's it
 
-![Hello world growl](http://i.imgur.com/3ksvKoN.gif)
+![Hello world](http://i.imgur.com/T4Z2KPj.gif)
 
 You now have a working notification system in your AngularJS application.
 
