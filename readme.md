@@ -35,7 +35,7 @@ $ bower install angular-growl-notifications
 
 Load the library in your markup:
 
-```markup
+```html
 <script type="text/javascript" src="angular.js"></script>
 <script type="text/javascript" src="angular-growl-notifications.js"></script>
 ```
