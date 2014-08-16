@@ -29,7 +29,7 @@ Learn how to create Mac OS X like pop-up notifications in your AngularJS applica
 
 Download the code from [GitHub](https://github.com/jvandemo/angular-growl-notifications) or install it using bower: 
 
-```bash
+```sh
 $ bower install angular-growl-notifications
 ```
 
@@ -70,7 +70,7 @@ Check out the [growl-notifications directive documentation](http://jvandemo.gith
 
 You can now use the `growl-notification` (singular) directive to create notifications in your application:
 
-```markup
+```html
 <growl-notification>
   Hello world
 </growl-notification>
