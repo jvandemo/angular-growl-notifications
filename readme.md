@@ -105,7 +105,9 @@ growl-notification{
 
 You now have a working notification system in your AngularJS application.
 
-Visit the [examples page](http://jvandemo.github.io/angular-growl-notifications/examples) for more sample code.
+When you load the page, a "Hello world" notification will automatically appear and disappear.
+
+There are many additional features and options, so make sure to visit the [examples page](http://jvandemo.github.io/angular-growl-notifications/examples) for more inspiration and sample code.
 
 ## Change log
 
