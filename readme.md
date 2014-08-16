@@ -25,7 +25,7 @@ Think Growl, but in AngularJS directives. Oh, and Bootstrap compatible too.
 
 Learn how to create Mac OS X like pop-up notifications in your AngularJS application.
 
-## STEP 1: Install the library
+### STEP 1: Install the library
 
 Download the code from [GitHub](https://github.com/jvandemo/angular-growl-notifications) or install it using bower: 
 
@@ -48,7 +48,7 @@ angular.module('yourApp', ['growlNotifications']);
 
 The library is now loaded in your AngularJS application.
 
-## STEP 2: Specify where you want to render the notifications
+### STEP 2: Specify where you want to render the notifications
 
 Before you can create notifications, you need to add the `growl-notifications` (plural) directive to your markup.
 
@@ -66,7 +66,7 @@ In most cases you should simply add it as the first element inside the `body` el
 
 Check out the [growl-notifications directive documentation](http://jvandemo.github.io/angular-growl-notifications/docs/directives/growl-notifications) for more information.
 
-## STEP 3: Create notifications
+### STEP 3: Create notifications
 
 You can now use the `growl-notification` (singular) directive to create notifications in your application:
 
@@ -78,7 +78,7 @@ You can now use the `growl-notification` (singular) directive to create notifica
 
 Check out the [growl-notification directive documentation](http://jvandemo.github.io/angular-growl-notifications/docs/directives/growl-notification) for all available options.
 
-## STEP 4: Customize look and feel
+### STEP 4: Customize look and feel
 
 By default no styling is applied so you can completely control the look and feel of the notifications in your application's stylesheet.
 
@@ -97,7 +97,7 @@ growl-notification{
 }
 ```
 
-## That's it
+### That's it
 
 You now have a working notification system in your AngularJS application.
 
