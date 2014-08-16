@@ -15,6 +15,7 @@ To download the latest code, please check the v2.x.x branch. It contains the lat
 
 - Directives have been rewritten for better performance
 - Now supports manually closing notifications using markup
+- v1 release has been moved to v1.x.x branch
 
 ### v0.7.0
 
