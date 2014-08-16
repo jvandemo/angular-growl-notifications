@@ -56,7 +56,7 @@ This directive allows you to control where the notifications are rendered in you
 
 In most cases you should simply add it as the first element inside the `body` element:
 
-```markup
+```html
 <body>
   <growl-notifications></growl-notifications>
   
