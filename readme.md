@@ -1,5 +1,11 @@
 ![AngularJS Growl Notifications](http://i.imgur.com/F4ttQxo.png)
 
+# IMPORTANT NOTICE
+
+I will be working on releasing v2 all weekend so it may be possible that the documentation and code are out of sync for a few hours.
+
+To download the latest code, please check the v2.x.x branch. It contains the latest code that is used in the new documentation website.
+
 # Growl notifications for AngularJS
 [![Build Status](https://travis-ci.org/jvandemo/angular-growl-notifications.png?branch=master)](https://travis-ci.org/jvandemo/angular-growl-notifications)
 
