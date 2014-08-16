@@ -7,7 +7,7 @@ Notifications logically belong inside the view layer of your application.
 
 Most existing growl systems require you to add notifications using JavaScript inside your controller layer.
 
-This module allows you to declaratively create notifications using directives only, supporting both inline expressions and HTML.
+This very lightweight library (<2KB) allows you to declaratively create notifications using directives only, supporting both inline expressions and HTML.
 
 Think Growl, but in AngularJS directives. Oh, and Bootstrap compatible too.
 
