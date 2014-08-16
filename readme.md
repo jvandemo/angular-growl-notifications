@@ -1,5 +1,11 @@
 ![AngularJS Growl Notifications](http://i.imgur.com/F4ttQxo.png)
 
+# IMPORTANT NOTICE
+
+This branch contains v1 of AngularJS Growl Notifications to support older installations.
+
+Please make sure to visit the master branch for the latest release.
+
 # Growl notifications for AngularJS
 [![Build Status](https://travis-ci.org/jvandemo/angular-growl-notifications.png?branch=master)](https://travis-ci.org/jvandemo/angular-growl-notifications)
 
