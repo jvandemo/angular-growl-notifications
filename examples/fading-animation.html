@@ -25,12 +25,12 @@ angular.module(&#39;yourApp&#39;, [&#39;growlNotifications&#39;, &#39;ngAnimate&
 <pre><code class="language-markup">&lt;!-- Show a notification when the page is loaded --&gt;
 &lt;growl-notification class=&quot;fading&quot;&gt;
     Only fade out is animated
-&lt;growl-notification&gt;
+&lt;/growl-notification&gt;
 
 &lt;!-- Show a notification when a button is clicked --&gt;
 &lt;growl-notification class=&quot;fading&quot; ng-if=&quot;showGrowl&quot;&gt;
     Both fade in and out are animated
-&lt;growl-notification&gt;
+&lt;/growl-notification&gt;
 
 &lt;!-- Button to display second notification --&gt;
 &lt;button ng-click=&quot;showGrowl = true&quot; class=&quot;btn btn-primary&quot;&gt;Show second notification&lt;/button&gt;</code></pre>
