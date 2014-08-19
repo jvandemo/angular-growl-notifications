@@ -1,0 +1,123 @@
+h1 Dynamically adding notifications
+
+p As of V2, Growl Notifications for AngularJS no longer contains a service to add messages.
+
+p This causes better separation of concerns and allows you to implement your own custom logic anywhere you like inside your application (service, controller, ...).
+
+p In this example we use a <code>form</code> and a <code>controller</code> to demonstrate how you can dynamically add notifications.
+
+h2 Scenario
+
+ul
+    li show a form to add new notifcations
+    li show error message when message is empty
+    li if message is not empty, show a growl notification with the message
+
+h2 Try it
+
+growl-notifications
+
+div(ng-controller="AddDynamicNotificationsExampleCtrl")
+    div(ng-repeat="(id, notification) in notifications track by id")
+        growl-notification {{notification}}
+
+    form
+        .form-group(ng-class="{'has-error': invalidNotification}")
+            label.control-label New notification
+            input.form-control(ng-model="newNotification", placeholder="Enter a message...")
+            span.help-block.ng-cloak(ng-show="invalidNotification") Please enter a valid message
+        btn.btn.btn-primary(ng-click="add(newNotification)") Add notification
+
+
+h2 Code
+
+.ng-non-bindable
+    :markdown
+        ```markup
+        <!-- Load controller -->
+        <div ng-controller="AddDynamicNotificationsExampleCtrl">
+
+            <!--
+                Loop over notifications using ng-repeat
+
+                Track by id so each message has unique id
+                and identical messages don't cause AngularJS
+                to throw errors about ng-repeat containing
+                identical errors.
+
+                Don't use ng-repeat on growl-notification element directly
+                but use a wrapping element instead.
+            -->
+            <div ng-repeat="(id, notification) in notifications track by id">
+                <growl-notification>
+                    {{notification}}
+                </growl-notification>
+            </div>
+
+            <!--
+                Show form to add new notifications
+
+                The Bootstrap CSS has been removed for clarity.
+            -->
+            <form>
+                <div>
+                    <label>New notification</label>
+                    <input type="text" ng-model="newNotification" />
+                    <span class="ng-cloak" ng-show="invalidNotification">
+                        Please enter a valid message
+                    </span>
+                </div>
+                <button ng-click="add(newNotification)">Add notification</button>
+            </form>
+        </div>
+        ```
+
+:markdown
+    ```javascript
+    angular.module('examples', ['growlNotifications', 'ngAnimate'])
+
+      .controller('AddDynamicNotificationsExampleCtrl', ['$scope', function($scope){
+
+        /**
+         * Initialize index
+         * @type {number}
+         */
+        var index = 0;
+
+        /**
+         * Boolean to show error if new notification is invalid
+         * @type {boolean}
+         */
+        $scope.invalidNotification = false;
+
+        /**
+         * Placeholder for notifications
+         *
+         * We use a hash with auto incrementing key
+         * so we can use "track by" in ng-repeat
+         *
+         * @type {{}}
+         */
+        $scope.notifications = {};
+
+        /**
+         * Add a notification
+         *
+         * @param notification
+         */
+        $scope.add = function(notification){
+
+          var i;
+
+          if(!notification){
+            $scope.invalidNotification = true;
+            return;
+          }
+
+          i = index++;
+          $scope.invalidNotification = false;
+          $scope.notifications[i] = notification;
+        };
+
+      }]);
+    ```
