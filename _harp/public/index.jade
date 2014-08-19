@@ -1,76 +1,16 @@
-.container
-    .jumbotron.jumbotron-home
+.jumbotron.jumbotron-home
+    .container
         .row
+
             .col-sm-7
                 h1 Growl notifications for AngularJS
-                p Think Growl, but in AngularJS directives. Oh, and Bootstrap compatible too.
-                ul.benefits
-                    li
-                        .title Plug and play
-                        .detail Create Mac OS X like pop-up notifications from anywhere in your markup using a simple directive. No JavaScript programming required.
-                         :markdown
-                            ```markup
-                            <growl-notification>
-                                Hello world
-                            </growl-notification>
-                            ```
-                    li
-                        .title Supports expressions
-                        .detail Embed AngularJS expressions in your notifications to create personalized messages. Growl notifications for AngularJS will make sure the correct scope is applied so you don't have to worry about it.
-                        :markdown
-                            ```markup
-                            <growl-notification>
-                                Hello {{name}}
-                            </growl-notification>
-                            ```
-                    li
-                        .title Supports HTML
-                        .detail Use HTML in your notifications to tailor the content of your messages to your needs.
-                        :markdown
-                            ```markup
-                            <growl-notification>
-                                Hello <strong>{{name}}</strong>
-                            </growl-notification>
-                            ```
-                    li
-                        .title Supports animation
-                        .detail Automatically integrates with the AngularJS animation service to bring your notifications to life.
-                        :markdown
-                            ```css
-                            growl-notification.ng-enter{
-                                ...
-                            }
-                            growl-notification.ng-enter.ng-enter-active{
-                                ...
-                            }
-                            growl-notification.ng-leave{
-                                ...
-                            }
-                            growl-notification.ng-leave.ng-leave-active{
-                                ...
-                            }
-                            ```
-                    li
-                        .title Supports CSS
-                        .detail Style the notifications using standard CSS to integrate them visually with your existing web application.
-                        :markdown
-                            ```css
-                            growl-notification{
-                                background: white;
-                            }
-                            ```
-                    li
-                        .title Logically correct MVC-wise
-                        .detail Notifications logically belong inside the view layer of your application. Most existing growl systems require you to add notifications using JavaScript inside your controller layer. Growl notifications for AngularJS allows you to declaratively create notifications right where they belong: in your view.
-                    li
-                        .title Optimized for performance
-                        .detail Very small download size (<2KB)
-                    li
-                        .title Free
-                        .detail Includes an MIT license so you can use it anywhere you like
-
+                h2 Think Growl, but in AngularJS directives. Oh, and Bootstrap compatible too.
+                ul.features
+                    li Very small download size (<2KB)
+                    li Open source
+                    li Free (MIT license)
                 p
-                    a.btn.btn-primary.btn-block(href="docs") Get started
+                    a.btn.btn-primary.hidden-xs(href="docs") Get started immediately
 
             .col-sm-4.col-sm-offset-1
                 .logo
@@ -81,3 +21,122 @@
                 a.btn.btn-primary.btn-block(href="docs") Read the documentation
 
                 a.btn.btn-primary.btn-block(href="https://github.com/jvandemo/angular-growl-notifications") Download from GitHub
+
+section.section-home.section-white
+    .container
+        .row
+            .col-md-6
+                h1 Plug and play
+                h2 No JavaScript programming required
+                p Create Mac OS X like pop-up notifications from anywhere in your markup using a simple directive.
+                p
+                    a.btn.btn-primary(href="docs") Get started immediately
+            .col-md-6
+                :markdown
+                    ```markup
+                    <growl-notification>
+                        Hello world
+                    </growl-notification>
+                    ```
+
+section.section-home.section-grey
+    .container
+        .row
+            .col-md-6.col-md-push-6
+                h1 Supports expressions
+                h2 to create personalized notifications
+                p Embed AngularJS expressions in your notifications to create personalized messages. Growl notifications for AngularJS will make sure the correct scope is applied so you don't have to worry about it.
+                p
+                    a.btn.btn-default(href="docs/directives/growl-notification") Learn more
+
+            .col-md-6.col-md-pull-6
+                :markdown
+                    ```markup
+                    <growl-notification>
+                        Hello {{name}}
+                    </growl-notification>
+                    ```
+
+section.section-home.section-white
+    .container
+        .row
+            .col-md-6
+                h1 Supports HTML
+                h2 to embed custom markup
+                p Use HTML in your notifications to tailor the content of your messages to your needs.
+                p
+                    a.btn.btn-default(href="docs/directives/growl-notification") Learn more
+
+            .col-md-6
+                :markdown
+                    ```markup
+                    <growl-notification>
+                        Hello <strong>{{name}}</strong>
+                    </growl-notification>
+                    ```
+
+section.section-home.section-grey
+    .container
+        .row
+            .col-md-6.col-md-push-6
+                h1 Supports animations
+                h2 for modern interfaces
+                p Automatically integrates with the AngularJS animation service to bring your notifications to life.
+                p
+                    a.btn.btn-default(href="examples/fading-animation") View a live example
+
+            .col-md-6.col-md-pull-6
+                :markdown
+                    ```css
+                    growl-notification.ng-enter{
+                        ...
+                    }
+                    growl-notification.ng-enter.ng-enter-active{
+                        ...
+                    }
+                    growl-notification.ng-leave{
+                        ...
+                    }
+                    growl-notification.ng-leave.ng-leave-active{
+                        ...
+                    }
+                    ```
+
+section.section-home.section-white
+    .container
+        .row
+            .col-md-6
+                h1 Supports CSS
+                h2 to customize look and feel
+                p Style the notifications using standard CSS to integrate them visually with your existing web application.
+                p
+                    a.btn.btn-default(href="examples") View example code
+            .col-md-6
+                :markdown
+                    ```css
+                    growl-notification{
+                        background: white;
+                    }
+                    ```
+
+section.section-home.section-grey
+    .container
+        .row
+            .col-md-4
+                h1 Optimized
+                h2 for performance
+                p Very small download size (<2KB)
+            .col-md-4
+                h1 Open source
+                h2 for your convenience
+                p Read the code and help it make better
+                p
+                    a.btn.btn-default(href="https://github.com/jvandemo/angular-growl-notifications") Visit Github repo
+            .col-md-4
+                h1 Free
+                h2 MIT license
+                p Use it in all your projects for free
+
+section.section-home
+    div.text-center
+        a.btn.btn-primary.btn-lg(href="docs") Get started
