@@ -56,6 +56,7 @@ footer{
 pre[class*='language-']{
   border: none;
   padding: 1em 0;
+  font-size: .9rem;
 }
 
 /************************************************************
@@ -163,10 +164,14 @@ pre{
 }
 
 section.section-home{
-  padding: 3rem 0;
+  padding: 5rem 0;
+
+
+
   h1{
     font-size: 2rem;
     margin: 0 0 0.5em 0;
+    font-weight: 300;
   }
   h2{
     font-size: 1.4rem;
@@ -181,6 +186,10 @@ section.section-home{
   p{
     font-size: 1rem;
   }
+  &.section-inner-shadow{
+    padding: 6rem 0;
+    box-shadow: inset 0px 90px 80px -80px rgba(0,0,0,0.3);
+  }
   &.section-white, &.section-grey{
     h1{
       color: rgb(52, 73, 94);
@@ -191,12 +200,25 @@ section.section-home{
     p{
       color: rgb(52, 73, 94);
     }
+    h1.title{
+      font-size: 3rem;
+      text-align: center;
+      margin: 1rem 0 5rem 0;
+      color: #000000;
+      font-weight: 100;
+    }
   }
   &.section-white{
     background: #ffffff;
   }
   &.section-grey{
     background: rgb(236, 240, 241);
+  }
+  &.section-grey-dark{
+    background: #262626;
+  }
+  .row + .row{
+    margin-top: 6rem;
   }
 }
 

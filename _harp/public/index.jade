@@ -10,7 +10,7 @@
                     li Open source
                     li Free (MIT license)
                 p
-                    a.btn.btn-primary.hidden-xs(href="docs") Get started immediately
+                    a.btn.btn-primary.hidden-xs(href="docs") Quick start guide
 
             .col-sm-4.col-sm-offset-1
                 .logo
@@ -22,16 +22,16 @@
 
                 a.btn.btn-primary.btn-block(href="https://github.com/jvandemo/angular-growl-notifications") Download from GitHub
 
-section.section-home.section-white
+section.section-home.section-white.section-inner-shadow
     .container
         .row
-            .col-md-4.col-md-offset-1
+            .col-md-5
                 h1 Plug and play
                 h2 No JavaScript programming required
                 p Create Mac OS X like pop-up notifications from anywhere in your markup using a simple directive.
                 p
                     a.btn.btn-primary(href="docs") Get started immediately
-            .col-md-5.col-md-offset-1
+            .col-md-6.col-md-offset-1
                 :markdown
                     ```markup
                     <growl-notification>
@@ -41,15 +41,18 @@ section.section-home.section-white
 
 section.section-home.section-grey
     .container
+
+        h1.title Essential compatibility
+
         .row
-            .col-md-4.col-md-offset-1.col-md-push-6
+            .col-md-5.col-md-offset-1.col-md-push-6
                 h1 Supports expressions
                 h2 to create personalized notifications
                 p Embed AngularJS expressions in your notifications to create personalized messages. Growl notifications for AngularJS will make sure the correct scope is applied so you don't have to worry about it.
                 p
                     a.btn.btn-default(href="docs/directives/growl-notification") Learn more
 
-            .col-md-5.col-md-offset-1.col-md-pull-5
+            .col-md-6.col-md-pull-6
                 :markdown
                     ```markup
                     <growl-notification>
@@ -57,17 +60,15 @@ section.section-home.section-grey
                     </growl-notification>
                     ```
 
-section.section-home.section-white
-    .container
         .row
-            .col-md-4.col-md-offset-1
+            .col-md-5
                 h1 Supports HTML
                 h2 to embed custom markup
                 p Use HTML in your notifications to tailor the content of your messages to your needs.
                 p
                     a.btn.btn-default(href="docs/directives/growl-notification") Learn more
 
-            .col-md-5.col-md-offset-1
+            .col-md-6.col-md-offset-1
                 :markdown
                     ```markup
                     <growl-notification>
@@ -75,17 +76,24 @@ section.section-home.section-white
                     </growl-notification>
                     ```
 
-section.section-home.section-grey
+section.section-home
+    div.text-center
+        a.btn.btn-primary.btn-lg(href="docs") Get started right now
+
+section.section-home.section-white.section-inner-shadow
     .container
+
+        h1.title Pixel perfect control
+
         .row
-            .col-md-4.col-md-offset-1.col-md-push-6
+            .col-md-5.col-md-offset-1.col-md-push-6
                 h1 Supports animations
                 h2 for modern interfaces
                 p Automatically integrates with the AngularJS animation service to bring your notifications to life.
                 p
                     a.btn.btn-default(href="examples/fading-animation") View a live example
 
-            .col-md-5.col-md-offset-1.col-md-pull-5
+            .col-md-6.col-md-pull-6
                 :markdown
                     ```css
                     growl-notification.ng-enter{
@@ -102,16 +110,14 @@ section.section-home.section-grey
                     }
                     ```
 
-section.section-home.section-white
-    .container
         .row
-            .col-md-4.col-md-offset-1
+            .col-md-5
                 h1 Supports CSS
                 h2 to customize look and feel
                 p Style the notifications using standard CSS to integrate them visually with your existing web application.
                 p
                     a.btn.btn-default(href="examples") View example code
-            .col-md-5.col-md-offset-1
+            .col-md-6.col-md-offset-1
                 :markdown
                     ```css
                     growl-notification{
@@ -139,4 +145,4 @@ section.section-home.section-grey
 
 section.section-home
     div.text-center
-        a.btn.btn-primary.btn-lg(href="docs") Get started
+        a.btn.btn-primary.btn-lg(href="docs") Allright, let's see some code!
