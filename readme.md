@@ -109,6 +109,10 @@ MIT
 
 ## Change log
 
+### v2.1.1
+
+- Fix issue with injection of `$animate` in controller of `growlNotification` directive
+
 ### v2.1.0
 
 - Update code to follow the [AngularJS styleguide](https://github.com/toddmotto/angularjs-styleguide) principles

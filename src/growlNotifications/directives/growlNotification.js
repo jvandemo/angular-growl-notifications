@@ -68,7 +68,7 @@
    * @param $scope
    * @param $element
    */
-  function growlNotificationController($scope, $element) {
+  function growlNotificationController($element, $animate) {
 
     /**
      * Placeholder for timer promise
