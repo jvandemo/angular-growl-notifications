@@ -1,5 +1,11 @@
-angular.module('growlNotifications.directives')
-  .directive('growlNotifications', ['growlNotifications', function (growlNotifications) {
+(function () {
+
+  /**
+   * Create directive definition object
+   *
+   * @param growlNotifications
+   */
+  function growlNotificationsDirective(growlNotifications) {
 
     return {
 
@@ -21,4 +27,14 @@ angular.module('growlNotifications.directives')
       }
     };
 
-  }]);
+  }
+
+  // Inject dependencies
+  growlNotificationsDirective.$inject = ['growlNotifications'];
+
+  // Export
+  angular
+    .module('growlNotifications.directives')
+    .directive('growlNotifications', growlNotificationsDirective);
+
+})();

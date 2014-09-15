@@ -1,53 +1,64 @@
-angular.module('growlNotifications.services')
-    .provider('growlNotifications', [function () {
+(function () {
 
-        // Default options
-        var options = {
-            ttl: 5000
-        };
+  /**
+   * Growl notifications provider
+   */
+  function growlNotificationsProvider(){
 
-        /**
-         * Provider method to change default options
-         *
-         * @param newOptions
-         */
-        this.setOptions = function (newOptions) {
-            angular.extend(options, newOptions);
-            return this;
-        };
+    // Default options
+    var options = {
+      ttl: 5000
+    };
 
-        /**
-         * Provider convenience method to get or set default ttl
-         *
-         * @param ttl
-         * @returns {*}
-         */
-        this.ttl = function(ttl){
-            if(angular.isDefined(ttl)){
-                options.ttl = ttl;
-                return this;
-            }
-            return options.ttl;
-        };
+    /**
+     * Provider method to change default options
+     *
+     * @param newOptions
+     */
+    this.setOptions = function (newOptions) {
+      angular.extend(options, newOptions);
+      return this;
+    };
 
-        /**
-         * Factory method
-         *
-         * @param $timeout
-         * @param $rootScope
-         * @returns {GrowlNotifications}
-         */
-        this.$get = function () {
+    /**
+     * Provider convenience method to get or set default ttl
+     *
+     * @param ttl
+     * @returns {*}
+     */
+    this.ttl = function (ttl) {
+      if (angular.isDefined(ttl)) {
+        options.ttl = ttl;
+        return this;
+      }
+      return options.ttl;
+    };
 
-            function GrowlNotifications() {
+    /**
+     * Factory method
+     *
+     * @param $timeout
+     * @param $rootScope
+     * @returns {GrowlNotifications}
+     */
+    this.$get = function () {
 
-                this.options = options;
-                this.element = null;
+      function GrowlNotifications() {
 
-            }
+        this.options = options;
+        this.element = null;
 
-            return new GrowlNotifications();
+      }
 
-        };
+      return new GrowlNotifications();
 
-    }]);
+    };
+
+  }
+
+  // Export
+  angular
+    .module('growlNotifications.services')
+    .provider('growlNotifications', growlNotificationsProvider);
+
+})();

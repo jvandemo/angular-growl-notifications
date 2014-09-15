@@ -109,9 +109,13 @@ MIT
 
 ## Change log
 
+### v2.1.0
+
+- Update code to follow the [AngularJS styleguide](https://github.com/toddmotto/angularjs-styleguide) principles
+
 ### v2.0.1
 
-- Fixed issue with minification of controller in `growlNotification` directive (see [this issue](https://github.com/jvandemo/angular-growl-notifications/issues/3)).
+- Fix issue with minification of controller in `growlNotification` directive (see [this issue](https://github.com/jvandemo/angular-growl-notifications/issues/3)).
 
 ### v2.0.0
 

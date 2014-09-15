@@ -1,5 +1,6 @@
-angular.module('growlNotifications.directives')
-  .directive('growlNotification', ['growlNotifications', '$animate', '$timeout', function (growlNotifications, $animate, $timeout) {
+(function () {
+
+  function growlNotificationDirective(growlNotifications, $animate, $timeout){
 
     var defaults = {
       ttl: growlNotifications.options.ttl || 5000
@@ -20,33 +21,8 @@ angular.module('growlNotifications.directives')
 
       /**
        * Controller
-       *
-       * @param $scope
-       * @param $element
-       * @param $attrs
        */
-      controller: ['$scope', '$element', function($scope, $element){
-
-        /**
-         * Placeholder for timer promise
-         */
-        this.timer = null;
-
-        /**
-         * Helper method to close notification manually
-         */
-        this.remove = function(){
-
-          // Remove the element
-          $animate.leave($element);
-
-          // Cancel scheduled automatic removal if there is one
-          if (this.timer && this.timer.cancel) {
-            this.timer.cancel();
-          }
-        };
-
-      }],
+      controller: growlNotificationController,
 
       /**
        * Make the controller available in the directive scope
@@ -66,7 +42,7 @@ angular.module('growlNotifications.directives')
         // Assemble options
         var options = angular.extend({}, defaults, scope.$eval(iAttrs.growlNotificationOptions));
 
-        if(iAttrs.ttl){
+        if (iAttrs.ttl) {
           options.ttl = scope.$eval(iAttrs.ttl);
         }
 
@@ -81,4 +57,46 @@ angular.module('growlNotifications.directives')
       }
     };
 
-  }]);
+  }
+
+  // Inject dependencies
+  growlNotificationDirective.$inject = ['growlNotifications', '$animate', '$timeout'];
+
+  /**
+   * Directive controller
+   *
+   * @param $scope
+   * @param $element
+   */
+  function growlNotificationController($scope, $element) {
+
+    /**
+     * Placeholder for timer promise
+     */
+    this.timer = null;
+
+    /**
+     * Helper method to close notification manually
+     */
+    this.remove = function () {
+
+      // Remove the element
+      $animate.leave($element);
+
+      // Cancel scheduled automatic removal if there is one
+      if (this.timer && this.timer.cancel) {
+        this.timer.cancel();
+      }
+    };
+
+  }
+
+  // Inject dependencies
+  growlNotificationController.$inject = ['$scope', '$element'];
+
+  // Export
+  angular
+    .module('growlNotifications.directives')
+    .directive('growlNotification', growlNotificationDirective);
+
+})();

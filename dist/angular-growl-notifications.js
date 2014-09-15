@@ -1,27 +1,26 @@
-(function(window, document) {
-// Create all modules and define dependencies to make sure they exist
-// and are loaded in the correct order to satisfy dependency injection
-// before all nested files are concatenated by Grunt
+(function(){
 
-// Config
-angular.module('growlNotifications.config', [])
-    .value('growlNotifications.config', {
-        debug: true
-    });
+    // Config
+    angular.module('growlNotifications.config', [])
+        .value('growlNotifications.config', {
+            debug: true
+        });
 
-// Modules
-angular.module('growlNotifications.directives', []);
-angular.module('growlNotifications.filters', []);
-angular.module('growlNotifications.services', []);
-angular.module('growlNotifications',
-    [
-        'growlNotifications.config',
-        'growlNotifications.directives',
-        'growlNotifications.filters',
-        'growlNotifications.services'
-    ]);
-angular.module('growlNotifications.directives')
-  .directive('growlNotification', ['growlNotifications', '$animate', '$timeout', function (growlNotifications, $animate, $timeout) {
+    // Modules
+    angular.module('growlNotifications.directives', []);
+    angular.module('growlNotifications.filters', []);
+    angular.module('growlNotifications.services', []);
+    angular.module('growlNotifications',
+        [
+            'growlNotifications.config',
+            'growlNotifications.directives',
+            'growlNotifications.filters',
+            'growlNotifications.services'
+        ]);
+
+})();(function () {
+
+  function growlNotificationDirective(growlNotifications, $animate, $timeout){
 
     var defaults = {
       ttl: growlNotifications.options.ttl || 5000
@@ -42,33 +41,8 @@ angular.module('growlNotifications.directives')
 
       /**
        * Controller
-       *
-       * @param $scope
-       * @param $element
-       * @param $attrs
        */
-      controller: ['$scope', '$element', function($scope, $element){
-
-        /**
-         * Placeholder for timer promise
-         */
-        this.timer = null;
-
-        /**
-         * Helper method to close notification manually
-         */
-        this.remove = function(){
-
-          // Remove the element
-          $animate.leave($element);
-
-          // Cancel scheduled automatic removal if there is one
-          if (this.timer && this.timer.cancel) {
-            this.timer.cancel();
-          }
-        };
-
-      }],
+      controller: growlNotificationController,
 
       /**
        * Make the controller available in the directive scope
@@ -88,7 +62,7 @@ angular.module('growlNotifications.directives')
         // Assemble options
         var options = angular.extend({}, defaults, scope.$eval(iAttrs.growlNotificationOptions));
 
-        if(iAttrs.ttl){
+        if (iAttrs.ttl) {
           options.ttl = scope.$eval(iAttrs.ttl);
         }
 
@@ -103,8 +77,56 @@ angular.module('growlNotifications.directives')
       }
     };
 
-  }]);angular.module('growlNotifications.directives')
-  .directive('growlNotifications', ['growlNotifications', function (growlNotifications) {
+  }
+
+  // Inject dependencies
+  growlNotificationDirective.$inject = ['growlNotifications', '$animate', '$timeout'];
+
+  /**
+   * Directive controller
+   *
+   * @param $scope
+   * @param $element
+   */
+  function growlNotificationController($scope, $element) {
+
+    /**
+     * Placeholder for timer promise
+     */
+    this.timer = null;
+
+    /**
+     * Helper method to close notification manually
+     */
+    this.remove = function () {
+
+      // Remove the element
+      $animate.leave($element);
+
+      // Cancel scheduled automatic removal if there is one
+      if (this.timer && this.timer.cancel) {
+        this.timer.cancel();
+      }
+    };
+
+  }
+
+  // Inject dependencies
+  growlNotificationController.$inject = ['$scope', '$element'];
+
+  // Export
+  angular
+    .module('growlNotifications.directives')
+    .directive('growlNotification', growlNotificationDirective);
+
+})();(function () {
+
+  /**
+   * Create directive definition object
+   *
+   * @param growlNotifications
+   */
+  function growlNotificationsDirective(growlNotifications) {
 
     return {
 
@@ -126,57 +148,77 @@ angular.module('growlNotifications.directives')
       }
     };
 
-  }]);angular.module('growlNotifications.services')
-    .provider('growlNotifications', [function () {
+  }
 
-        // Default options
-        var options = {
-            ttl: 5000
-        };
+  // Inject dependencies
+  growlNotificationsDirective.$inject = ['growlNotifications'];
 
-        /**
-         * Provider method to change default options
-         *
-         * @param newOptions
-         */
-        this.setOptions = function (newOptions) {
-            angular.extend(options, newOptions);
-            return this;
-        };
+  // Export
+  angular
+    .module('growlNotifications.directives')
+    .directive('growlNotifications', growlNotificationsDirective);
 
-        /**
-         * Provider convenience method to get or set default ttl
-         *
-         * @param ttl
-         * @returns {*}
-         */
-        this.ttl = function(ttl){
-            if(angular.isDefined(ttl)){
-                options.ttl = ttl;
-                return this;
-            }
-            return options.ttl;
-        };
+})();(function () {
 
-        /**
-         * Factory method
-         *
-         * @param $timeout
-         * @param $rootScope
-         * @returns {GrowlNotifications}
-         */
-        this.$get = function () {
+  /**
+   * Growl notifications provider
+   */
+  function growlNotificationsProvider(){
 
-            function GrowlNotifications() {
+    // Default options
+    var options = {
+      ttl: 5000
+    };
 
-                this.options = options;
-                this.element = null;
+    /**
+     * Provider method to change default options
+     *
+     * @param newOptions
+     */
+    this.setOptions = function (newOptions) {
+      angular.extend(options, newOptions);
+      return this;
+    };
 
-            }
+    /**
+     * Provider convenience method to get or set default ttl
+     *
+     * @param ttl
+     * @returns {*}
+     */
+    this.ttl = function (ttl) {
+      if (angular.isDefined(ttl)) {
+        options.ttl = ttl;
+        return this;
+      }
+      return options.ttl;
+    };
 
-            return new GrowlNotifications();
+    /**
+     * Factory method
+     *
+     * @param $timeout
+     * @param $rootScope
+     * @returns {GrowlNotifications}
+     */
+    this.$get = function () {
 
-        };
+      function GrowlNotifications() {
 
-    }]);
-})(window, document);
+        this.options = options;
+        this.element = null;
+
+      }
+
+      return new GrowlNotifications();
+
+    };
+
+  }
+
+  // Export
+  angular
+    .module('growlNotifications.services')
+    .provider('growlNotifications', growlNotificationsProvider);
+
+})();

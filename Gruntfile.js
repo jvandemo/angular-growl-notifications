@@ -12,11 +12,9 @@ module.exports = function (grunt) {
       },
       library: {
         src: [
-          'src/growlNotifications/growlNotifications.prefix',
           'src/growlNotifications/growlNotifications.js',
           'src/growlNotifications/directives/**/*.js',
-          'src/growlNotifications/services/**/*.js',
-          'src/growlNotifications/growlNotifications.suffix'
+          'src/growlNotifications/services/**/*.js'
         ],
         dest: 'dist/angular-growl-notifications.js'
       }
