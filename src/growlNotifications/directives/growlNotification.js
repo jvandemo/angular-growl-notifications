@@ -92,7 +92,7 @@
   }
 
   // Inject dependencies
-  growlNotificationController.$inject = ['$scope', '$element'];
+  growlNotificationController.$inject = ['$element', '$animate'];
 
   // Export
   angular
