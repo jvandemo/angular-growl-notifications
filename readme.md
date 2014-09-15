@@ -109,6 +109,10 @@ MIT
 
 ## Change log
 
+### v2.0.1
+
+- Fixed issue with minification of controller in `growlNotification` directive (see [this issue](https://github.com/jvandemo/angular-growl-notifications/issues/3)).
+
 ### v2.0.0
 
 - Directives have been rewritten for better performance

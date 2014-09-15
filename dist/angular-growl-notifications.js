@@ -47,7 +47,7 @@ angular.module('growlNotifications.directives')
        * @param $element
        * @param $attrs
        */
-      controller: function($scope, $element, $attrs){
+      controller: ['$scope', '$element', function($scope, $element){
 
         /**
          * Placeholder for timer promise
@@ -68,7 +68,7 @@ angular.module('growlNotifications.directives')
           }
         };
 
-      },
+      }],
 
       /**
        * Make the controller available in the directive scope

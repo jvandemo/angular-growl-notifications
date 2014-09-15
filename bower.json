@@ -1,6 +1,6 @@
 {
   "name": "angular-growl-notifications",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": [
     "dist/angular-growl-notifications.js"
   ],
