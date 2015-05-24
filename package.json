@@ -8,6 +8,7 @@
     "notification",
     "notifications"
   ],
+  "main": "./dist/angular-growl-notifications.js",
   "author": {
     "name": "Jurgen Van de Moere",
     "email": "jurgen.van.de.moere@gmail.com",
