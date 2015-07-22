@@ -70,9 +70,11 @@
         $animate.move(iElem, growlNotifications.element);
 
         // Schedule automatic removal
-        ctrl.timer = $timeout(function () {
-          $animate.leave(iElem);
-        }, options.ttl);
+        if(options.ttl > 0) {
+          ctrl.timer = $timeout(function () {
+            $animate.leave(iElem);
+          }, options.ttl);
+        }
 
       }
     };
