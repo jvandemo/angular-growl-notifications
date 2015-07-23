@@ -50,7 +50,7 @@
         $animate.move(iElem, growlNotifications.element);
 
         // Schedule automatic removal
-        if(options.ttl > 0) {
+        if(options.ttl >= 0) {
           ctrl.timer = $timeout(function () {
             $animate.leave(iElem);
           }, options.ttl);

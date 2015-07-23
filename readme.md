@@ -111,7 +111,7 @@ MIT
 
 ### v2.1.3
 
-- Added support for permanent notification using ttl=0
+- Added support for permanent notification using ttl=-1 or ttl=false
 
 ### v2.1.2
 
