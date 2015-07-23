@@ -109,6 +109,10 @@ MIT
 
 ## Change log
 
+### v2.1.3
+
+- Added support for permanent notification using ttl=0
+
 ### v2.1.2
 
 - Make angular dependency version less strict
