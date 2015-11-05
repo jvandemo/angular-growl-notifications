@@ -1,17 +1,17 @@
 'use strict';
 
-describe('growlNotifications service', function() {
+describe('growlNotifications service', function () {
 
-    var growlNotifications;
+  var growlNotifications;
 
-    beforeEach(module('growlNotifications'));
+  beforeEach(module('growlNotifications'));
 
-    beforeEach(inject(function(_growlNotifications_){
-        growlNotifications = _growlNotifications_;
-    }));
+  beforeEach(inject(function (_growlNotifications_) {
+    growlNotifications = _growlNotifications_;
+  }));
 
-    it('should exist', function() {
-        expect(growlNotifications).toBeDefined();
-    });
+  it('should exist', function () {
+    expect(growlNotifications).toBeDefined();
+  });
 
 });

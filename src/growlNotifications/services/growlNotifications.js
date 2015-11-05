@@ -3,7 +3,7 @@
   /**
    * Growl notifications provider
    */
-  function growlNotificationsProvider(){
+  function growlNotificationsProvider() {
 
     // Default options
     var options = {

@@ -20,7 +20,7 @@
 
 })();(function () {
 
-  function growlNotificationDirective(growlNotifications, $animate, $timeout){
+  function growlNotificationDirective(growlNotifications, $animate, $timeout) {
 
     var defaults = {
       ttl: growlNotifications.options.ttl || 5000
@@ -69,9 +69,19 @@
         // Move the element to the right location in the DOM
         $animate.move(iElem, growlNotifications.element);
 
+        // Run onOpen handler if there is one
+        if (iAttrs.onOpen) {
+          scope.$eval(iAttrs.onOpen);
+        }
+
         // Schedule automatic removal
         ctrl.timer = $timeout(function () {
           $animate.leave(iElem);
+
+          // Run onClose handler if there is one
+          if(iAttrs.onClose){
+            scope.$eval(iAttrs.onClose);
+          }
         }, options.ttl);
 
       }
@@ -85,10 +95,12 @@
   /**
    * Directive controller
    *
-   * @param $scope
    * @param $element
+   * @param $animate
+   * @param $attrs
+   * @param $scope
    */
-  function growlNotificationController($element, $animate) {
+  function growlNotificationController($element, $animate, $attrs, $scope) {
 
     /**
      * Placeholder for timer promise
@@ -106,20 +118,26 @@
       // Cancel scheduled automatic removal if there is one
       if (this.timer && this.timer.cancel) {
         this.timer.cancel();
+
+        // Run onClose handler if there is one
+        if($attrs.onClose){
+          $scope.$eval($attrs.onClose);
+        }
       }
     };
 
   }
 
   // Inject dependencies
-  growlNotificationController.$inject = ['$element', '$animate'];
+  growlNotificationController.$inject = ['$element', '$animate', '$attrs', '$scope'];
 
   // Export
   angular
     .module('growlNotifications.directives')
     .directive('growlNotification', growlNotificationDirective);
 
-})();(function () {
+})();
+(function () {
 
   /**
    * Create directive definition object
