@@ -64,11 +64,49 @@ Check out the [growl-notifications directive documentation](http://jvandemo.gith
 
 ### STEP 3: Create notifications
 
-You can now use the `growl-notification` (singular) directive to create notifications in your application:
+You can now use the `growl-notification` (singular) directive to create notifications anywhere in your application:
 
 ```html
+<!-- This notification will be shown when the page loads -->
 <growl-notification>
   Hello world
+</growl-notification>
+```
+
+Most of the time you will want to show a notification when some event occurs. You can use the native AngularJS `ng-if` directive to make this happen:
+
+```html
+<!-- This notification will be shown when showNotification becomes truthy -->
+<growl-notification ng-if="showNotification">
+  showNotification just became truthy
+</growl-notification>
+```
+
+By default notifications are shown for 5 seconds, but you can specify the `ttl` in milliseconds for every notification individually:
+
+```html
+<growl-notification ttl="1000">
+  Only show me for 1000ms
+</growl-notification>
+```
+
+You can also specify handlers you wish to run when the notification opens and closes:
+
+```html
+<growl-notification on-open="doSomething()" on-close="doSomethingElse()">
+  ...
+</growl-notification>
+```
+
+which is convenient if you want to auto-reset some state when the notification is closed:
+
+```html
+<button ng-click="showNotification = true">Show notification</button>
+
+<!-- reset showNotification to false again when notification is closed -->
+<!-- so the ng-if is triggered every time the button is clicked -->
+<growl-notification ng-if="showNotification" on-close="showNotification = false">
+  ...
 </growl-notification>
 ```
 
@@ -108,6 +146,12 @@ There are many additional features and options, so make sure to visit the [examp
 MIT
 
 ## Change log
+
+### v2.2.0
+
+- Added support for `on-open` handler
+- Added support for `on-close` handler
+- Updated documentation
 
 ### v2.1.2
 
