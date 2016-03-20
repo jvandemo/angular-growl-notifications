@@ -1,6 +1,6 @@
 {
   "name": "angular-growl-notifications",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "keywords": [
     "angular",
     "angularjs",
@@ -18,7 +18,9 @@
     "type": "git",
     "url": "http://github.com/jvandemo/angular-growl-notifications.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "angular": ">=1.2.22 <2"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-concat": "~0.3.0",

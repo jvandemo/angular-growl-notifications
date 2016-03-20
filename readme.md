@@ -165,6 +165,10 @@ MIT
 
 ## Change log
 
+### v2.3.0
+
+- Updated angular dependency version (#22)
+
 ### v2.2.0
 
 - Added support for `on-open` handler
