@@ -165,6 +165,10 @@ MIT
 
 ## Change log
 
+### v2.4.0
+
+- Updated timeout cancel mechanism (#27)
+
 ### v2.3.0
 
 - Updated angular dependency version (#22)

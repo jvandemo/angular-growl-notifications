@@ -1,24 +1,25 @@
-(function(){
+(function () {
 
-    // Config
-    angular.module('growlNotifications.config', [])
-        .value('growlNotifications.config', {
-            debug: true
-        });
+  // Config
+  angular.module('growlNotifications.config', [])
+    .value('growlNotifications.config', {
+      debug: true
+    });
 
-    // Modules
-    angular.module('growlNotifications.directives', []);
-    angular.module('growlNotifications.filters', []);
-    angular.module('growlNotifications.services', []);
-    angular.module('growlNotifications',
-        [
-            'growlNotifications.config',
-            'growlNotifications.directives',
-            'growlNotifications.filters',
-            'growlNotifications.services'
-        ]);
+  // Modules
+  angular.module('growlNotifications.directives', []);
+  angular.module('growlNotifications.filters', []);
+  angular.module('growlNotifications.services', []);
+  angular.module('growlNotifications',
+    [
+      'growlNotifications.config',
+      'growlNotifications.directives',
+      'growlNotifications.filters',
+      'growlNotifications.services'
+    ]);
 
-})();(function () {
+})();
+(function () {
 
   function growlNotificationDirective(growlNotifications, $animate, $timeout) {
 
@@ -100,7 +101,7 @@
    * @param $attrs
    * @param $scope
    */
-  function growlNotificationController($element, $animate, $attrs, $scope) {
+  function growlNotificationController($element, $animate, $attrs, $scope, $timeout) {
 
     /**
      * Placeholder for timer promise
@@ -116,8 +117,8 @@
       $animate.leave($element);
 
       // Cancel scheduled automatic removal if there is one
-      if (this.timer && this.timer.cancel) {
-        this.timer.cancel();
+      if (this.timer) {
+        $timeout.cancel(this.timer);
 
         // Run onClose handler if there is one
         if($attrs.onClose){
@@ -129,7 +130,7 @@
   }
 
   // Inject dependencies
-  growlNotificationController.$inject = ['$element', '$animate', '$attrs', '$scope'];
+  growlNotificationController.$inject = ['$element', '$animate', '$attrs', '$scope', '$timeout'];
 
   // Export
   angular
@@ -181,7 +182,7 @@
   /**
    * Growl notifications provider
    */
-  function growlNotificationsProvider(){
+  function growlNotificationsProvider() {
 
     // Default options
     var options = {
