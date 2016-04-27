@@ -80,7 +80,7 @@
    * @param $attrs
    * @param $scope
    */
-  function growlNotificationController($element, $animate, $attrs, $scope) {
+  function growlNotificationController($element, $animate, $attrs, $scope, $timeout) {
 
     /**
      * Placeholder for timer promise
@@ -96,8 +96,8 @@
       $animate.leave($element);
 
       // Cancel scheduled automatic removal if there is one
-      if (this.timer && this.timer.cancel) {
-        this.timer.cancel();
+      if (this.timer) {
+        $timeout.cancel(this.timer);
 
         // Run onClose handler if there is one
         if($attrs.onClose){
@@ -109,7 +109,7 @@
   }
 
   // Inject dependencies
-  growlNotificationController.$inject = ['$element', '$animate', '$attrs', '$scope'];
+  growlNotificationController.$inject = ['$element', '$animate', '$attrs', '$scope', '$timeout'];
 
   // Export
   angular
