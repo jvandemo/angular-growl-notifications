@@ -159,6 +159,10 @@ When you load the page, a "Hello world" notification will automatically appear a
 
 There are many additional features and options, so make sure to visit the [examples page](http://jvandemo.github.io/angular-growl-notifications/examples) for more inspiration and sample code.
 
+### Manually closing notification after a UI-Router state change
+
+If you find yourself in a rare situation where you need to manually close a notification after a state change, you can create a custom directive  as demonstrated in [this plunk](https://plnkr.co/edit/4j9pivI7bBuCVy8QQ2zK?p=preview) and discussed in [this thread](https://github.com/jvandemo/angular-growl-notifications/issues/25).
+
 ## License
 
 MIT
