@@ -1,6 +1,6 @@
 (function () {
 
-  function growlNotificationDirective(growlNotifications, $animate, $timeout) {
+  function growlNotificationDirective(growlNotifications, $animate, $interval) {
 
     var defaults = {
       ttl: growlNotifications.options.ttl || 5000
@@ -42,6 +42,10 @@
         // Assemble options
         var options = angular.extend({}, defaults, scope.$eval(iAttrs.growlNotificationOptions));
 
+        // The number of times the notification timeout method should be run
+        // This should always be set to 1 to emulate $timeout
+        var REPEAT_COUNT = 1;
+
         if (iAttrs.ttl) {
           options.ttl = scope.$eval(iAttrs.ttl);
         }
@@ -55,14 +59,14 @@
         }
 
         // Schedule automatic removal
-        ctrl.timer = $timeout(function () {
+        ctrl.timer = $interval(function () {
           $animate.leave(iElem);
 
           // Run onClose handler if there is one
           if(iAttrs.onClose){
             scope.$eval(iAttrs.onClose);
           }
-        }, options.ttl);
+        }, options.ttl, REPEAT_COUNT);
 
       }
     };
@@ -70,7 +74,7 @@
   }
 
   // Inject dependencies
-  growlNotificationDirective.$inject = ['growlNotifications', '$animate', '$timeout'];
+  growlNotificationDirective.$inject = ['growlNotifications', '$animate', '$interval'];
 
   /**
    * Directive controller
@@ -80,7 +84,7 @@
    * @param $attrs
    * @param $scope
    */
-  function growlNotificationController($element, $animate, $attrs, $scope, $timeout) {
+  function growlNotificationController($element, $animate, $attrs, $scope, $interval) {
 
     /**
      * Placeholder for timer promise
@@ -97,7 +101,7 @@
 
       // Cancel scheduled automatic removal if there is one
       if (this.timer) {
-        $timeout.cancel(this.timer);
+        $interval.cancel(this.timer);
 
         // Run onClose handler if there is one
         if($attrs.onClose){
@@ -109,7 +113,7 @@
   }
 
   // Inject dependencies
-  growlNotificationController.$inject = ['$element', '$animate', '$attrs', '$scope', '$timeout'];
+  growlNotificationController.$inject = ['$element', '$animate', '$attrs', '$scope', '$interval'];
 
   // Export
   angular
