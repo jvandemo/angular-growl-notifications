@@ -169,6 +169,10 @@ MIT
 
 ## Change log
 
+### v2.5.0
+
+- Replace $timeout with $interval to fix #28
+
 ### v2.4.0
 
 - Updated timeout cancel mechanism (#27)
