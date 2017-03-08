@@ -79,15 +79,17 @@
           scope.$eval(iAttrs.onOpen);
         }
 
-        // Schedule automatic removal
-        ctrl.timer = $interval(function () {
-          $animate.leave(iElem);
+        // Schedule automatic removal unless ttl set to false/-1
+        if(options.ttl !== -1 && options.ttl !== false) {
+          ctrl.timer = $interval(function () {
+            $animate.leave(iElem);
 
-          // Run onClose handler if there is one
-          if(iAttrs.onClose){
-            scope.$eval(iAttrs.onClose);
-          }
-        }, options.ttl, REPEAT_COUNT);
+            // Run onClose handler if there is one
+            if(iAttrs.onClose){
+              scope.$eval(iAttrs.onClose);
+            }
+          }, options.ttl, REPEAT_COUNT);
+        }
 
       }
     };
