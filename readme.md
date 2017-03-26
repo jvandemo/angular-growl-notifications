@@ -108,6 +108,8 @@ By default notifications are shown for 5 seconds, but you can specify the `ttl` 
 </growl-notification>
 ```
 
+A `ttl` of `-1` or `false` will disable the automatic closing timeout, making the notification permanent. You will need to close the notification manually using `$growlNotification.remove()`.
+
 You can also specify handlers you wish to run when the notification opens and closes:
 
 ```html
@@ -168,6 +170,10 @@ If you find yourself in a rare situation where you need to manually close a noti
 MIT
 
 ## Change log
+
+### v2.5.1
+
+- Added support for permanent notifications. Setting `ttl` to `-1` or `false` will keep notifications visible until manually closed (e.g with `$growlNotification.remove()`);
 
 ### v2.5.0
 
