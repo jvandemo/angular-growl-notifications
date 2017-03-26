@@ -175,6 +175,10 @@ MIT
 
 - Added support for permanent notifications. Setting `ttl` to `-1` or `false` will keep notifications visible until manually closed (e.g with `$growlNotification.remove()`);
 
+### v2.6.0
+
+- Add support for infinite notification (#31)
+
 ### v2.5.0
 
 - Replace $timeout with $interval to fix #28
